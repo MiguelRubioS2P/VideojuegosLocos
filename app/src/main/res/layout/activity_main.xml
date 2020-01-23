@@ -7,15 +7,106 @@
     android:background="@color/negro"
     tools:context=".MainActivity">
 
+
     <TextView
+        android:id="@+id/LogoTexto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Videojuegos Locos"
+        android:text="Inicio"
         android:textColor="@color/blanco"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="96dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/juegos"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/LogoTexto" />
+
+    <Button
+        android:id="@+id/Ps4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/playstation"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/logo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/Xbox"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/xbox"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/logo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--
+    <ImageButton
+        android:id="@+id/pc"
+        android:layout_width="106dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="36dp"
+        android:maxWidth="@android:dimen/app_icon_size"
+        android:src="@drawable/pc"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/Ps4"
+        app:layout_constraintVertical_bias="0.054" />-->
+    <Button
+        android:id="@+id/Nintendo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/nintendo"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/Xbox"
+        app:layout_constraintVertical_bias="0.009" />
+
+    <Button
+        android:id="@+id/PC"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/pc"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/Ps4"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
