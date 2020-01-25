@@ -6,32 +6,40 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATE;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATETABLA1;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATETABLA2;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_NOM;
-import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA1;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA2;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.TAG;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.VERSIO;
 
 public class AjudaDB extends SQLiteOpenHelper {
 
+    //pasamos el nombre de la base de datos
     AjudaDB(Context con){
         super(con, BD_NOM,null,VERSIO);
     }
 
 
+    //creamos las tablas de la base de datos
     @Override
     public void onCreate(SQLiteDatabase db){
         try{
-            db.execSQL(BD_CREATE);
+            db.execSQL(BD_CREATETABLA1);
+            db.execSQL(BD_CREATETABLA2);
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
 
+    //actualiza la versión de la base de datos
+    //elimina las tablas.
     @Override
     public void onUpgrade(SQLiteDatabase db, int VersioAntiga, int VersioNova){
         Log.w(TAG, "Actualitzant Base de dades de la versió" + VersioAntiga + " a " + VersioNova + ". Destruirà totes les dades");
-        db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA);
+        db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA1);
+        db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA2);
         onCreate(db);
     }
 }
