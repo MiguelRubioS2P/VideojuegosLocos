@@ -8,9 +8,15 @@ import android.util.Log;
 
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATETABLA1;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATETABLA2;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATETABLA3;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATETABLA4;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_CREATETABLA5;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_NOM;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA1;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA2;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA3;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA4;
+import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.BD_TAULA5;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.TAG;
 import static cat.paucasesnoves.videojuegoslocos.entitats.DBInterface.VERSIO;
 
@@ -28,6 +34,9 @@ public class AjudaDB extends SQLiteOpenHelper {
         try{
             db.execSQL(BD_CREATETABLA1);
             db.execSQL(BD_CREATETABLA2);
+            db.execSQL(BD_CREATETABLA3);
+            db.execSQL(BD_CREATETABLA4);
+            db.execSQL(BD_CREATETABLA5);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -40,6 +49,9 @@ public class AjudaDB extends SQLiteOpenHelper {
         Log.w(TAG, "Actualitzant Base de dades de la versió" + VersioAntiga + " a " + VersioNova + ". Destruirà totes les dades");
         db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA1);
         db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA2);
+        db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA3);
+        db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA4);
+        db.execSQL("DROP TABLE IF EXISTS " + BD_TAULA5);
         onCreate(db);
     }
 }
