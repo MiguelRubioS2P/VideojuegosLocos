@@ -1,5 +1,6 @@
 package cat.paucasesnoves.videojuegoslocos.entitats;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -86,18 +87,48 @@ public class DBInterface {
         return this;
     }
 
-    //Insertar un juego
+    //Insertar un juego tabla1
+    public long insertarJuego(String nombre, String descripcion, Float dinero, String imagen, Boolean favorito){
+        ContentValues initualValues = new ContentValues();
+        initualValues.put(CLAVE_NOMBRE1,nombre);
+        initualValues.put(CLAVE_DESCRIPCION1,descripcion);
+        initualValues.put(CLAVE_PRECIO1,dinero);
+        initualValues.put(CLAVE_IMAGEN1,imagen);
+        initualValues.put(CLAVE_FAVORITO1,favorito);
+        return bd.insert(BD_TAULA1,null,initualValues);
+    }
 
-    //Insertar una plataforma
+    //Insertar una plataforma tabla3
     //PC,Switch,Xbox,Playstation
+    public long insertarPlataforma(String nombre, String imagen){
+        ContentValues initualValues = new ContentValues();
+        initualValues.put(CLAVE_NOMBRE3,nombre);
+        initualValues.put(CLAVE_IMAGEN3,imagen);
+        return bd.insert(BD_TAULA3,null,initualValues);
+    }
 
-    //Insertar un genero
+    //Insertar un genero tabla2
+    public long insertarGenero(String nombre){
+        ContentValues initualValues = new ContentValues();
+        initualValues.put(CLAVE_NOMBRE2,nombre);
+        return bd.insert(BD_TAULA2,null,initualValues);
+    }
 
+    //Insertar JuegosPlataformas tabla4
+    public long insertarJuegosPlataformas(int juego,int plataforma){
+        ContentValues initualValues = new ContentValues();
+        initualValues.put(CLAVE_JUEGOID4,juego);
+        initualValues.put(CLAVE_PLATAFORMAID4,plataforma);
+        return bd.insert(BD_TAULA4,null,initualValues);
+    }
 
-    //Insertar JuegosPlataformas
-
-    //Insertar JuegosGeneros
-
+    //Insertar JuegosGeneros tabla5
+    public long insertarJuegosGeneros(int juego,int genero){
+        ContentValues initualValues = new ContentValues();
+        initualValues.put(CLAVE_JUEGOID5,juego);
+        initualValues.put(CLAVE_GENERO5,genero);
+        return bd.insert(BD_TAULA5,null,initualValues);
+    }
 
 
 }
