@@ -88,6 +88,7 @@ public class DBInterface {
         return this;
     }
 
+    //Cerrar la base de datos
     public void cerrar(){
         ajuda.close();
     }
@@ -103,6 +104,12 @@ public class DBInterface {
         return bd.insert(BD_TAULA1,null,initualValues);
     }
 
+    //Borrar un juego
+    //También hay que borrar las relaciones de las tablas juegosgeneros y juegosplataformas
+
+    //Modificar un juego
+    //Controlar los elementos individualmente
+
     //Devolver un juego tabla1
     public Cursor obtenerJuego(long IDFila) throws SQLException{
         Cursor mCursor = bd.query(true,BD_TAULA1, new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_ID1 + " = " + IDFila,null,null,null,null,null);
@@ -112,7 +119,7 @@ public class DBInterface {
         return mCursor;
     }
 
-    
+
 
     //Insertar una plataforma tabla3
     //PC,Switch,Xbox,Playstation
