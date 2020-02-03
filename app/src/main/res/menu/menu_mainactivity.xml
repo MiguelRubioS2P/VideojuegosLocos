@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
-        android:id="@+id/pruebaMenu"
-        android:title="Prueba"></item>
+        android:id="@+id/insertarJuego"
+        android:title="Insertar"></item>
+    <item
+        android:id="@+id/modifiacrJuego"
+        android:title="Modificar"></item>
+    <item
+        android:id="@+id/eliminarJuego"
+        android:title="Eliminar"></item>
 </menu>
