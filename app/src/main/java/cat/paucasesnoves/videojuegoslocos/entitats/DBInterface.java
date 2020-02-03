@@ -106,6 +106,8 @@ public class DBInterface {
 
     //Borrar un juego
     //También hay que borrar las relaciones de las tablas juegosgeneros y juegosplataformas
+    //Recuperar en la tabla de generos y plataformas donde esta el juego a eliminar
+
 
     //Modificar un juego
     //Controlar los elementos individualmente
@@ -119,7 +121,10 @@ public class DBInterface {
         return mCursor;
     }
 
-
+    //Devolver todos los juegos favoritos
+    public Cursor obtenerTodosLosjuegosFavoritos(){
+        return bd.query(BD_TAULA1,new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_FAVORITO1 + " = True",null,null,null,null,null);
+    }
 
     //Insertar una plataforma tabla3
     //PC,Switch,Xbox,Playstation
@@ -141,6 +146,11 @@ public class DBInterface {
 
     }
 
+    //Devolver todos las plataformas
+    public Cursor obtenerTodosLasPlataformas(){
+        return bd.query(BD_TAULA3,new String[]{CLAVE_ID3,CLAVE_NOMBRE3},null,null,null,null,null,null);
+    }
+
     //Insertar un genero tabla2
     public long insertarGenero(String nombre){
         ContentValues initualValues = new ContentValues();
@@ -155,6 +165,11 @@ public class DBInterface {
             mCursor.moveToFirst();
         }
         return mCursor;
+    }
+
+    //Devolver todos los generos
+    public Cursor obtenerTodosLosGeneros(){
+        return bd.query(BD_TAULA2,new String[]{CLAVE_ID2,CLAVE_NOMBRE2},null,null,null,null,null,null);
     }
 
     //Insertar JuegosPlataformas tabla4
@@ -174,6 +189,23 @@ public class DBInterface {
         return mCursor;
     }
 
+    //Devolver todos los JuegosPlataformas
+
+    /**
+     * Recuperamos todas las plataformas a las cual esta un juego
+     *
+     * @param idJuego id del juego
+     * @return Todas las plataformas de un juego
+     */
+    public Cursor obtenerTodosLosJuegosPlataformas(int idJuego){
+        return bd.query(BD_TAULA4,new String[]{CLAVE_ID4,CLAVE_JUEGOID4,CLAVE_PLATAFORMAID4},CLAVE_JUEGOID4 + " = " + idJuego,null,null,null,null,null);
+    }
+
+    //Borrar JuegosPlataformas
+    public boolean borrarJuegosPlataformas(long IDFila){
+        return bd.delete(BD_TAULA4,CLAVE_ID4 + " = " + IDFila,null) > 0;
+    }
+
     //Insertar JuegosGeneros tabla5
     public long insertarJuegosGeneros(int juego,int genero){
         ContentValues initualValues = new ContentValues();
@@ -189,6 +221,23 @@ public class DBInterface {
             mCursor.moveToFirst();
         }
         return mCursor;
+    }
+
+    //Devolver todos los JuegosGeneros
+
+    /**
+     * Recuperamos todos los generos a los cual pertenece un juego.
+     *
+     * @param idJuego id del juego
+     * @return Todos los generos de un juego
+     */
+    public Cursor obtenerTodosLosJuegosGeneros(int idJuego){
+        return bd.query(BD_TAULA5,new String[]{CLAVE_ID5,CLAVE_JUEGOID5,CLAVE_GENERO5},CLAVE_JUEGOID5 + " = " + idJuego,null,null,null,null,null);
+    }
+
+    //Borrar JuegosGeneros
+    public boolean borrarJuegosGeneros(long IDFila){
+        return bd.delete(BD_TAULA5,CLAVE_ID5 + " = " + IDFila,null) > 0;
     }
 
 
