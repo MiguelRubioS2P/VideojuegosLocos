@@ -11,4 +11,13 @@
     <item
         android:id="@+id/eliminarJuego"
         android:title="Eliminar"></item>
+    <item
+        android:id="@+id/insertarPlataforma"
+        android:title="Nueva Plataforma"
+        ></item>
+    <item
+        android:id="@+id/insertarGenero"
+        android:title="Nuevo Genero"
+        ></item>
+
 </menu>
