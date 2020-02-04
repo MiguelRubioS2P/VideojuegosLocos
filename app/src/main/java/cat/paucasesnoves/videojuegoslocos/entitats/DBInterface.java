@@ -56,8 +56,8 @@ public class DBInterface {
     //query creación cuarta tabla ------------------------------------------
     public static final String BD_CREATETABLA4 = "create table " + BD_TAULA4 +
             "( " + CLAVE_ID4 + " integer not null primary key autoincrement, " +
-            CLAVE_JUEGOID4 + " integer foreign key references " + BD_TAULA1 + "("+CLAVE_ID1+"), " +
-            CLAVE_PLATAFORMAID4 + " integer foreign key references " + BD_TAULA3 + "("+CLAVE_ID3+"));";
+            CLAVE_JUEGOID4 + "integer, foreign key (" + CLAVE_JUEGOID4 + ") references " + BD_TAULA1 + "(" + CLAVE_ID1 + "), " +
+            CLAVE_PLATAFORMAID4 + "integer, foreign key (" + CLAVE_PLATAFORMAID4 + ") references " + BD_TAULA3 + "(" + CLAVE_ID3 + "));";
     // ---------------------------------------------------------------------
     // quinta tabla --------------------------------------------------------
     public static final String BD_TAULA5 = "JuegosGeneros";
@@ -65,12 +65,14 @@ public class DBInterface {
     public static final String CLAVE_JUEGOID5 = "_juegoid";
     public static final String CLAVE_GENERO5 = "_generoid";
     // ---------------------------------------------------------------------
+
     //query creación quinta tabla ------------------------------------------
     public static final String BD_CREATETABLA5 = "create table " + BD_TAULA5 + "( " +
-            CLAVE_ID5 + " integer not null primary key autoincrement, " + CLAVE_JUEGOID5 +
-            " integer foreign key references " + BD_TAULA1+"("+CLAVE_ID1+"), " +
-            CLAVE_GENERO5 + " integer foreign key references " + BD_TAULA2 + "("+CLAVE_ID2+"));";
+            CLAVE_ID5 + " integer not null primary key autoincrement, " +
+            CLAVE_JUEGOID5 + "integer, foreign key (" + CLAVE_JUEGOID5 + ") references " + BD_TAULA1 + "(" + CLAVE_ID1 + "), " +
+            CLAVE_GENERO5 + " integer, foreign key (" + CLAVE_GENERO5 + ") references " + BD_TAULA2 + "(" + CLAVE_ID2 + "));";
     // ---------------------------------------------------------------------
+
 
     public static final int VERSIO = 1;
     private final Context context;
@@ -94,7 +96,7 @@ public class DBInterface {
     }
 
     //Insertar un juego tabla1
-    public long insertarJuego(String nombre, String descripcion, Float dinero, String imagen, Boolean favorito){
+    public long insertarJuego(String nombre, String descripcion, int dinero, String imagen, String favorito){
         ContentValues initualValues = new ContentValues();
         initualValues.put(CLAVE_NOMBRE1,nombre);
         initualValues.put(CLAVE_DESCRIPCION1,descripcion);
@@ -123,7 +125,7 @@ public class DBInterface {
 
     //Devolver todos los juegos favoritos
     public Cursor obtenerTodosLosjuegosFavoritos(){
-        return bd.query(BD_TAULA1,new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_FAVORITO1 + " = True",null,null,null,null,null);
+        return bd.query(BD_TAULA1,new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_FAVORITO1 + " = 'True'",null,null,null,null,null);
     }
 
     //Insertar una plataforma tabla3
