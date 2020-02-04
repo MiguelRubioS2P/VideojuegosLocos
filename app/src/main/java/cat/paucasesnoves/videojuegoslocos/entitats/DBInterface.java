@@ -54,10 +54,12 @@ public class DBInterface {
     public static final String CLAVE_PLATAFORMAID4 = "_plataformaid";
     // ---------------------------------------------------------------------
     //query creación cuarta tabla ------------------------------------------
-    public static final String BD_CREATETABLA4 = "create table " + BD_TAULA4 +
-            "( " + CLAVE_ID4 + " integer not null primary key autoincrement, " +
-            CLAVE_JUEGOID4 + "integer, foreign key (" + CLAVE_JUEGOID4 + ") references " + BD_TAULA1 + "(" + CLAVE_ID1 + "), " +
-            CLAVE_PLATAFORMAID4 + "integer, foreign key (" + CLAVE_PLATAFORMAID4 + ") references " + BD_TAULA3 + "(" + CLAVE_ID3 + "));";
+    public static final String BD_CREATETABLA4 = "create table " + BD_TAULA4 + "( " +
+            CLAVE_ID4 + " integer not null primary key autoincrement, " +
+            CLAVE_JUEGOID4 + " integer, " +
+            CLAVE_PLATAFORMAID4 + " integer, " +
+            "foreign key (" + CLAVE_JUEGOID4 + ") references " + BD_TAULA1 + "(" + CLAVE_ID1 + "), " +
+            "foreign key (" + CLAVE_PLATAFORMAID4 + ") references " + BD_TAULA3 + "(" + CLAVE_ID3 + "));";
     // ---------------------------------------------------------------------
     // quinta tabla --------------------------------------------------------
     public static final String BD_TAULA5 = "JuegosGeneros";
@@ -69,8 +71,10 @@ public class DBInterface {
     //query creación quinta tabla ------------------------------------------
     public static final String BD_CREATETABLA5 = "create table " + BD_TAULA5 + "( " +
             CLAVE_ID5 + " integer not null primary key autoincrement, " +
-            CLAVE_JUEGOID5 + "integer, foreign key (" + CLAVE_JUEGOID5 + ") references " + BD_TAULA1 + "(" + CLAVE_ID1 + "), " +
-            CLAVE_GENERO5 + " integer, foreign key (" + CLAVE_GENERO5 + ") references " + BD_TAULA2 + "(" + CLAVE_ID2 + "));";
+            CLAVE_JUEGOID5 + " integer, " +
+            CLAVE_GENERO5 + " integer, " +
+            "foreign key (" + CLAVE_JUEGOID5 + ") references " + BD_TAULA1 + "(" + CLAVE_ID1 + "), " +
+            "foreign key (" + CLAVE_GENERO5 + ") references " + BD_TAULA2 + "(" + CLAVE_ID2 + "));";
     // ---------------------------------------------------------------------
 
 
@@ -183,8 +187,8 @@ public class DBInterface {
     }
 
     //Devolver un JuegosPlataformas tabla4
-    public Cursor obtenerJuegosPlataformas(long IDFila) throws SQLException{
-        Cursor mCursor = bd.query(true,BD_TAULA4,new String[]{CLAVE_ID4,CLAVE_JUEGOID4,CLAVE_PLATAFORMAID4},CLAVE_ID4 + " = " + IDFila,null,null,null,null,null);
+    public Cursor obtenerJuegosPlataformas(int IDPlataforma) throws SQLException{
+        Cursor mCursor = bd.query(true,BD_TAULA4,new String[]{CLAVE_ID4,CLAVE_JUEGOID4,CLAVE_PLATAFORMAID4},CLAVE_PLATAFORMAID4 + " = " + IDPlataforma,null,null,null,null,null);
         if(mCursor != null){
             mCursor.moveToFirst();
         }
@@ -217,8 +221,8 @@ public class DBInterface {
     }
 
     //Devolver un JuegosGeneros tabla5
-    public Cursor obtenerJuegosGeneros(long IDFila){
-        Cursor mCursor = bd.query(true,BD_TAULA5,new String[]{CLAVE_ID5,CLAVE_JUEGOID5,CLAVE_GENERO5},CLAVE_ID5 + " = " + IDFila,null,null,null,null,null);
+    public Cursor obtenerJuegosGeneros(int IDGenero){
+        Cursor mCursor = bd.query(true,BD_TAULA5,new String[]{CLAVE_ID5,CLAVE_JUEGOID5,CLAVE_GENERO5},CLAVE_GENERO5 + " = " + IDGenero,null,null,null,null,null);
         if(mCursor != null){
             mCursor.moveToFirst();
         }
