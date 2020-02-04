@@ -126,6 +126,7 @@ public class DBInterface {
         return bd.query(BD_TAULA1,new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_FAVORITO1 + " = True",null,null,null,null,null);
     }
 
+
     //Insertar una plataforma tabla3
     //PC,Switch,Xbox,Playstation
     public long insertarPlataforma(String nombre, String imagen){
@@ -181,8 +182,8 @@ public class DBInterface {
     }
 
     //Devolver un JuegosPlataformas tabla4
-    public Cursor obtenerJuegosPlataformas(long IDFila) throws SQLException{
-        Cursor mCursor = bd.query(true,BD_TAULA4,new String[]{CLAVE_ID4,CLAVE_JUEGOID4,CLAVE_PLATAFORMAID4},CLAVE_ID4 + " = " + IDFila,null,null,null,null,null);
+    public Cursor obtenerJuegosPlataformas(int IDPlataforma) throws SQLException{
+        Cursor mCursor = bd.query(true,BD_TAULA4,new String[]{CLAVE_ID4,CLAVE_JUEGOID4,CLAVE_PLATAFORMAID4},CLAVE_PLATAFORMAID4 + " = " + IDPlataforma,null,null,null,null,null);
         if(mCursor != null){
             mCursor.moveToFirst();
         }

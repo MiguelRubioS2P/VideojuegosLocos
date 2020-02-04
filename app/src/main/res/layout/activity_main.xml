@@ -12,9 +12,10 @@
         android:id="@+id/LogoTexto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inicio"
+        android:text="@string/app_Home"
         android:textColor="@color/blanco"
-        android:textSize="20dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,9 +29,11 @@
         android:layout_height="101dp"
         android:layout_marginTop="64dp"
         android:src="@drawable/juegos"
+        android:contentDescription="@string/descripcion_imagen"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+
         app:layout_constraintTop_toTopOf="@id/LogoTexto" />
 
     <Button
