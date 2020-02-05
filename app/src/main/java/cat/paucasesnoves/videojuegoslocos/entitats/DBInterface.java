@@ -24,7 +24,7 @@ public class DBInterface {
     public static final String BD_CREATETABLA1 = "create table " + BD_TAULA1 + "( " +
             CLAVE_ID1 + " integer not null primary key autoincrement, " + CLAVE_NOMBRE1 +
             " text, " + CLAVE_DESCRIPCION1 + " text, " + CLAVE_PRECIO1 + " real, " +
-            CLAVE_IMAGEN1 + " text, " + CLAVE_FAVORITO1 + " text);";
+            CLAVE_IMAGEN1 + " blob, " + CLAVE_FAVORITO1 + " text);";
     // ---------------------------------------------------------------------
     //segunda tabla --------------------------------------------------------
     public static final String BD_TAULA2 = "Generos";
@@ -45,7 +45,7 @@ public class DBInterface {
     //query creación tercera tabla -----------------------------------------
     public static final String BD_CREATETABLA3 = "create table " + BD_TAULA3 +
             "( " + CLAVE_ID3 + " integer not null primary key autoincrement, " +
-            CLAVE_NOMBRE3 + " text, " + CLAVE_IMAGEN3 + " text);";
+            CLAVE_NOMBRE3 + " text, " + CLAVE_IMAGEN3 + " blob);";
     // ---------------------------------------------------------------------
     //cuarta tabla ---------------------------------------------------------
     public static final String BD_TAULA4 = "JuegosPlataformas";
@@ -83,7 +83,7 @@ public class DBInterface {
     private AjudaDB ajuda;
     private SQLiteDatabase bd;
 
-    public DBInterface(Context con){
+    public DBInterface(Context con) throws SQLException{
         this.context = con;
         ajuda = new AjudaDB(context);
     }
@@ -95,12 +95,24 @@ public class DBInterface {
     }
 
     //Cerrar la base de datos
-    public void cerrar(){
+    public void cerrar() throws SQLException{
         ajuda.close();
     }
 
     //Insertar un juego tabla1
-    public long insertarJuego(String nombre, String descripcion, int dinero, String imagen, String favorito){
+
+    /**
+     * Insertar un juego
+     *
+     * @param nombre Nombre para el juego
+     * @param descripcion Descripcion para el juego
+     * @param dinero Dinero para el juego
+     * @param imagen Imagen para el juego
+     * @param favorito Favorito para el juego
+     * @return Cursor
+     * @throws SQLException
+     */
+    public long insertarJuego(String nombre, String descripcion, int dinero, byte[] imagen, String favorito) throws SQLException{
         ContentValues initualValues = new ContentValues();
         initualValues.put(CLAVE_NOMBRE1,nombre);
         initualValues.put(CLAVE_DESCRIPCION1,descripcion);
@@ -119,6 +131,14 @@ public class DBInterface {
     //Controlar los elementos individualmente
 
     //Devolver un juego tabla1
+
+    /**
+     * Obtener un juego
+     *
+     * @param IDFila id del juego que deseamos buscar
+     * @return Cursor
+     * @throws SQLException
+     */
     public Cursor obtenerJuego(long IDFila) throws SQLException{
         Cursor mCursor = bd.query(true,BD_TAULA1, new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_ID1 + " = " + IDFila,null,null,null,null,null);
         if(mCursor != null){
@@ -128,13 +148,29 @@ public class DBInterface {
     }
 
     //Devolver todos los juegos favoritos
-    public Cursor obtenerTodosLosjuegosFavoritos(){
+
+    /**
+     * Devolvemos todos los juegos favoritos
+     *
+     * @return Cursor con todos los juegos favoritos
+     * @throws SQLException
+     */
+    public Cursor obtenerTodosLosjuegosFavoritos() throws SQLException{
         return bd.query(BD_TAULA1,new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_FAVORITO1 + " = 'True'",null,null,null,null,null);
     }
 
     //Insertar una plataforma tabla3
     //PC,Switch,Xbox,Playstation
-    public long insertarPlataforma(String nombre, String imagen){
+
+    /**
+     * Insertamos una plataforma
+     *
+     * @param nombre Nombre, valor para la plataforma
+     * @param imagen Imagen, valor para la plataforma
+     * @return Long
+     * @throws SQLException
+     */
+    public long insertarPlataforma(String nombre, byte[] imagen) throws SQLException{
         ContentValues initualValues = new ContentValues();
         initualValues.put(CLAVE_NOMBRE3,nombre);
         initualValues.put(CLAVE_IMAGEN3,imagen);
@@ -142,6 +178,14 @@ public class DBInterface {
     }
 
     //Devolver una plataforma tabla3
+
+    /**
+     * Devolver una plataforma
+     *
+     * @param IDFila id de la plataforma que queremos recuperar
+     * @return Cursor con un unico valor
+     * @throws SQLException
+     */
     public Cursor obtenerPlataforma(long IDFila) throws SQLException{
         Cursor mCursor = bd.query(true,BD_TAULA3,new String[]{CLAVE_ID3,CLAVE_NOMBRE3},CLAVE_ID3 + " = " + IDFila,null,null,null,null,null);
         if(mCursor != null){
@@ -153,11 +197,25 @@ public class DBInterface {
     }
 
     //Devolver todos las plataformas
-    public Cursor obtenerTodosLasPlataformas(){
+
+    /**
+     * Devolver todas las plataformas
+     *
+     * @return Cursor con todas las plataformas
+     * @throws SQLException
+     */
+    public Cursor obtenerTodosLasPlataformas() throws SQLException{
         return bd.query(BD_TAULA3,new String[]{CLAVE_ID3,CLAVE_NOMBRE3},null,null,null,null,null,null);
     }
 
     //Insertar un genero tabla2
+
+    /**
+     * Insertamos un genero
+     *
+     * @param nombre Valor nombre para el genero
+     * @return long
+     */
     public long insertarGenero(String nombre){
         ContentValues initualValues = new ContentValues();
         initualValues.put(CLAVE_NOMBRE2,nombre);
@@ -165,7 +223,15 @@ public class DBInterface {
     }
 
     //Devolver un genero tabla2
-    public Cursor obtenerGenero(long IDFila){
+
+    /**
+     * Devolvemos un genero
+     *
+     * @param IDFila id del genero
+     * @return Cursor con un resultado
+     * @throws SQLException
+     */
+    public Cursor obtenerGenero(long IDFila) throws SQLException{
         Cursor mCursor = bd.query(true,BD_TAULA2,new String[]{CLAVE_ID2,CLAVE_NOMBRE2},CLAVE_ID2 + " = " + IDFila,null,null,null,null,null);
         if(mCursor != null){
             mCursor.moveToFirst();
@@ -174,12 +240,27 @@ public class DBInterface {
     }
 
     //Devolver todos los generos
+
+    /**
+     * Todas las tuplas de los generos
+     *
+     * @return Cursor
+     */
     public Cursor obtenerTodosLosGeneros(){
         return bd.query(BD_TAULA2,new String[]{CLAVE_ID2,CLAVE_NOMBRE2},null,null,null,null,null,null);
     }
 
     //Insertar JuegosPlataformas tabla4
-    public long insertarJuegosPlataformas(int juego,int plataforma){
+
+    /**
+     * Insertar una tupla
+     *
+     * @param juego id del juego
+     * @param plataforma id de la plataforma
+     * @return Long
+     * @throws SQLException
+     */
+    public long insertarJuegosPlataformas(int juego,int plataforma) throws SQLException{
         ContentValues initualValues = new ContentValues();
         initualValues.put(CLAVE_JUEGOID4,juego);
         initualValues.put(CLAVE_PLATAFORMAID4,plataforma);
@@ -187,6 +268,14 @@ public class DBInterface {
     }
 
     //Devolver un JuegosPlataformas tabla4
+
+    /**
+     * Devolvemos todas las tuplas de juegos con una plataforma
+     *
+     * @param IDPlataforma id de la plataforma que queremos
+     * @return Cursor
+     * @throws SQLException
+     */
     public Cursor obtenerJuegosPlataformas(int IDPlataforma) throws SQLException{
         Cursor mCursor = bd.query(true,BD_TAULA4,new String[]{CLAVE_ID4,CLAVE_JUEGOID4,CLAVE_PLATAFORMAID4},CLAVE_PLATAFORMAID4 + " = " + IDPlataforma,null,null,null,null,null);
         if(mCursor != null){
@@ -203,17 +292,31 @@ public class DBInterface {
      * @param idJuego id del juego
      * @return Todas las plataformas de un juego
      */
-    public Cursor obtenerTodosLosJuegosPlataformas(int idJuego){
+    public Cursor obtenerTodosLosJuegosPlataformas(int idJuego) throws SQLException{
         return bd.query(BD_TAULA4,new String[]{CLAVE_ID4,CLAVE_JUEGOID4,CLAVE_PLATAFORMAID4},CLAVE_JUEGOID4 + " = " + idJuego,null,null,null,null,null);
     }
 
     //Borrar JuegosPlataformas
-    public boolean borrarJuegosPlataformas(long IDFila){
+
+    /**
+     * Elimina una tupla
+     *
+     * @param IDFila El id de la tupla que queremos eliminar
+     * @return boolean
+     */
+    public boolean borrarJuegosPlataformas(long IDFila) throws SQLException{
         return bd.delete(BD_TAULA4,CLAVE_ID4 + " = " + IDFila,null) > 0;
     }
 
     //Insertar JuegosGeneros tabla5
-    public long insertarJuegosGeneros(int juego,int genero){
+
+    /**
+     *
+     * @param juego id del juego
+     * @param genero id del genero
+     * @return Long
+     */
+    public long insertarJuegosGeneros(int juego,int genero) throws SQLException{
         ContentValues initualValues = new ContentValues();
         initualValues.put(CLAVE_JUEGOID5,juego);
         initualValues.put(CLAVE_GENERO5,genero);
@@ -221,7 +324,14 @@ public class DBInterface {
     }
 
     //Devolver un JuegosGeneros tabla5
-    public Cursor obtenerJuegosGeneros(int IDGenero){
+
+    /**
+     * Devolver las tuplas de cierto genero
+     *
+     * @param IDGenero El genero que queremos filtrar
+     * @return Cursor con todas las tuplas en la que este el genero especifico
+     */
+    public Cursor obtenerJuegosGeneros(int IDGenero) throws SQLException{
         Cursor mCursor = bd.query(true,BD_TAULA5,new String[]{CLAVE_ID5,CLAVE_JUEGOID5,CLAVE_GENERO5},CLAVE_GENERO5 + " = " + IDGenero,null,null,null,null,null);
         if(mCursor != null){
             mCursor.moveToFirst();
@@ -235,14 +345,21 @@ public class DBInterface {
      * Recuperamos todos los generos a los cual pertenece un juego.
      *
      * @param idJuego id del juego
-     * @return Todos los generos de un juego
+     * @return Un cursor con todos los generos que tiene un juego
      */
-    public Cursor obtenerTodosLosJuegosGeneros(int idJuego){
+    public Cursor obtenerTodosLosJuegosGeneros(int idJuego) throws SQLException{
         return bd.query(BD_TAULA5,new String[]{CLAVE_ID5,CLAVE_JUEGOID5,CLAVE_GENERO5},CLAVE_JUEGOID5 + " = " + idJuego,null,null,null,null,null);
     }
 
     //Borrar JuegosGeneros
-    public boolean borrarJuegosGeneros(long IDFila){
+
+    /**
+     * Borrar una fila
+     *
+     * @param IDFila id de la tupla correspondiente
+     * @return boolean
+     */
+    public boolean borrarJuegosGeneros(long IDFila) throws SQLException {
         return bd.delete(BD_TAULA5,CLAVE_ID5 + " = " + IDFila,null) > 0;
     }
 
