@@ -159,6 +159,7 @@ public class DBInterface {
         return bd.query(BD_TAULA1,new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_FAVORITO1 + " = 'True'",null,null,null,null,null);
     }
 
+
     //Insertar una plataforma tabla3
     //PC,Switch,Xbox,Playstation
 

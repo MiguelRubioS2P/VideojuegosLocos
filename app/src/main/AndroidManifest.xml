@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".itemJuego"></activity>
+        <activity android:name=".acciones.InsertarJuego"></activity>
+        <activity android:name=".acciones.InsertarGenero" />
+        <activity android:name=".acciones.InsertarPlataforma" />
+        <activity android:name=".entitats.GestorFavoritos" />
+        <activity android:name=".itemJuego" />
         <activity android:name=".Juegos" />
         <activity android:name=".MainActivity">
             <intent-filter>
