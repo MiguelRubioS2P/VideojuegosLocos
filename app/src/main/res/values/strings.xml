@@ -4,4 +4,7 @@
     <string name="app_fav">Favoritos</string>
     <string name="app_Home">Inicio</string>
     <string name="descripcion_imagen">Imagen logo app</string>
+    <string name="app_Play">Playstation</string>
+
+
 </resources>

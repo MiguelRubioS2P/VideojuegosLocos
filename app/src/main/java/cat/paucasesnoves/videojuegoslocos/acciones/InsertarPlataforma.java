@@ -13,4 +13,5 @@ public class InsertarPlataforma extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insertar_plataforma);
     }
+
 }

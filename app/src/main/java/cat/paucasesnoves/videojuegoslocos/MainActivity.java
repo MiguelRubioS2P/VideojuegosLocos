@@ -34,19 +34,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void comprobarLayout(){
-
-        db = new DBInterface(this);
+        //Realizar la bd
+        db = new DBInterface(getApplicationContext());
+        //Abrir
         db.abrir();
-
-
+        //Obtener todos los favoritos
         Cursor pepe = db.obtenerTodosLosjuegosFavoritos();
+        //Cerrar la conexión
+        db.cerrar();
 
+        //Pasar a int la cantidad de resultados . . .
         int resultados = pepe.getCount();
+        //Si tenemos algún favorito
         if(pepe.getCount() != 0) {
             cargarFavoritos();
-
         }else{
-
             //Si no hay favoritos cargar el main
             //Y los botones
             setContentView(R.layout.activity_main);
@@ -123,22 +125,20 @@ public class MainActivity extends AppCompatActivity {
         btnPS4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//Obtener info
-                Toast toast1;
+             /*   Toast toast1;
                 toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre la PS4", Toast.LENGTH_SHORT);
                 toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
 
-                try {
                     toast1.show();
-
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+*/
                 //Pasamos a la clase k gestiona los favoritos . . .
+
                 Intent i = new Intent(v.getContext(), Juegos.class);
                 i.putExtra("Id", 1);
-                startActivity(i);
-/*
+                startActivityForResult(i,100);
+
+
+                /*
 
                 //Creamos intent  para redirigir a la siguiente clase
                 Intent intent = new Intent(v.getContext(), DBInterface.class);
