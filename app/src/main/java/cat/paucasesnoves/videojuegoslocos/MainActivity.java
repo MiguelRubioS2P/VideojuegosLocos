@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import cat.paucasesnoves.videojuegoslocos.acciones.InsertarPlataforma;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 import cat.paucasesnoves.videojuegoslocos.entitats.GestorFavoritos;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void NuevaPlataforma(){
-        Intent i = new Intent(this,Juegos.class);
+        Intent i = new Intent(this, InsertarPlataforma.class);
         startActivity(i);
     }
     public void NuevoGenero(){

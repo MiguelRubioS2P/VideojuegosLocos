@@ -5,6 +5,10 @@
     <string name="app_Home">Inicio</string>
     <string name="descripcion_imagen">Imagen logo app</string>
     <string name="app_Play">Playstation</string>
+    <string name="app_Xbox">Xbox</string>
+    <string name="app_Nintendo">Nintendo</string>
+    <string name="app_PC">PC</string>
+    <string name="insertar_plat">Insertar Plataforma</string>
 
 
 </resources>

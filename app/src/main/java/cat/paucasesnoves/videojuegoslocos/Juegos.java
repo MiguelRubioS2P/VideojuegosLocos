@@ -18,7 +18,6 @@ import java.util.HashMap;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 
 public class Juegos extends AppCompatActivity {
-    private static final int PICK_IMAGE = 100;
     private static int plat;
     DBInterface bd;
     //Cuando se crea a vista

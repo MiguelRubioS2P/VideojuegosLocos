@@ -8,10 +8,10 @@
     tools:context=".acciones.InsertarPlataforma">
 
     <TextView
-        android:id="@+id/LogoFav"
+        android:id="@+id/LogoPlat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_fav"
+        android:text="@string/insertar_plat"
         android:textColor="@color/blanco"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -30,6 +30,7 @@
         android:layout_marginTop="192dp"
         android:text="Plataforma : "
         android:textStyle="bold"
+        android:gravity="center"
         android:textColor="@color/blanco"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,5 +49,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <Button
+        android:id="@+id/btnInsertPlat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="408dp"
+        android:gravity="center"
+        android:text="Insertar Plataforma"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nom" />
+
+    <ImageView
+        android:id="@+id/imgPlataforma"
+        android:layout_width="90dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginLeft="159dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="233dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsertPlat"
+        tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
