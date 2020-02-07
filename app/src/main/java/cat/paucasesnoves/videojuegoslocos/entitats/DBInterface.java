@@ -102,7 +102,8 @@ public class DBInterface {
     //Insertar un juego tabla1
 
     /**
-     * Insertar un juego
+     * Insertar un juego y devolvemos el juego para después utilizarlo mas adelante
+     * para insertar en los métodos de insert de las tablas relacionales
      *
      * @param nombre Nombre para el juego
      * @param descripcion Descripcion para el juego
@@ -112,19 +113,56 @@ public class DBInterface {
      * @return Cursor
      * @throws SQLException
      */
-    public long insertarJuego(String nombre, String descripcion, int dinero, byte[] imagen, String favorito) throws SQLException{
+    public Cursor insertarJuego(String nombre, String descripcion, int dinero, byte[] imagen, String favorito) throws SQLException{
+
+        Cursor juego = null;
+
         ContentValues initualValues = new ContentValues();
         initualValues.put(CLAVE_NOMBRE1,nombre);
         initualValues.put(CLAVE_DESCRIPCION1,descripcion);
         initualValues.put(CLAVE_PRECIO1,dinero);
         initualValues.put(CLAVE_IMAGEN1,imagen);
         initualValues.put(CLAVE_FAVORITO1,favorito);
-        return bd.insert(BD_TAULA1,null,initualValues);
+        bd.insert(BD_TAULA1,null,initualValues);
+
+        // recuperar el juego insertado, para tener la id, para utilizarlo cuando tengamos la plataforma
+        // y el genero
+
+         juego = obtenerJuego(nombre);
+
+        return juego;
     }
 
     //Borrar un juego
-    //También hay que borrar las relaciones de las tablas juegosgeneros y juegosplataformas
-    //Recuperar en la tabla de generos y plataformas donde esta el juego a eliminar
+
+    /**
+     * Eliminar un juego con el id que pasamos,
+     * Obtenemos los cursores de las tablas mediante el id del juego para primero
+     * eliminar las relaciones y después el juego.
+     *
+     * @param idJuego Id del juego que deseamos eliminar
+     * @return Boolean
+     */
+    public boolean eliminarJuego(int idJuego){
+
+        Cursor JuegosGeneros=  obtenerTodosLosJuegosGeneros(idJuego);
+        Cursor JuegosPlataformas =  obtenerTodosLosJuegosPlataformas(idJuego);
+
+        JuegosGeneros.moveToFirst();
+        while(!JuegosGeneros.isAfterLast()){
+            borrarJuegosGeneros(JuegosGeneros.getLong(0));
+            JuegosGeneros.moveToNext();
+        }
+
+        JuegosPlataformas.moveToFirst();
+        while(!JuegosPlataformas.isAfterLast()){
+            borrarJuegosPlataformas(JuegosPlataformas.getLong(0));
+            JuegosPlataformas.moveToNext();
+        }
+
+        return (bd.delete(BD_TAULA1,CLAVE_ID1 + " = " + idJuego,null)) > 0;
+    }
+
 
 
     //Modificar un juego
@@ -133,14 +171,14 @@ public class DBInterface {
     //Devolver un juego tabla1
 
     /**
-     * Obtener un juego
+     * Obtener un juego a partir de un nombre
      *
-     * @param IDFila id del juego que deseamos buscar
+     * @param NombreJuego nombre del juego que deseamos buscar
      * @return Cursor
      * @throws SQLException
      */
-    public Cursor obtenerJuego(long IDFila) throws SQLException{
-        Cursor mCursor = bd.query(true,BD_TAULA1, new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_ID1 + " = " + IDFila,null,null,null,null,null);
+    public Cursor obtenerJuego(String NombreJuego) throws SQLException{
+        Cursor mCursor = bd.query(true,BD_TAULA1, new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_NOMBRE1 + " = " + NombreJuego,null,null,null,null,null);
         if(mCursor != null){
             mCursor.moveToFirst();
         }
