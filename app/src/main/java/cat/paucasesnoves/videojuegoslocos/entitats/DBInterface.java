@@ -129,7 +129,6 @@ public class DBInterface {
         // y el genero
 
          juego = obtenerJuego(nombre);
-
         return juego;
     }
 
@@ -148,16 +147,20 @@ public class DBInterface {
         Cursor JuegosGeneros=  obtenerTodosLosJuegosGeneros(idJuego);
         Cursor JuegosPlataformas =  obtenerTodosLosJuegosPlataformas(idJuego);
 
-        JuegosGeneros.moveToFirst();
-        while(!JuegosGeneros.isAfterLast()){
-            borrarJuegosGeneros(JuegosGeneros.getLong(0));
-            JuegosGeneros.moveToNext();
+        if(JuegosGeneros.getCount() != 0){
+            JuegosGeneros.moveToFirst();
+            while(!JuegosGeneros.isAfterLast()){
+                borrarJuegosGeneros(JuegosGeneros.getLong(0));
+                JuegosGeneros.moveToNext();
+            }
         }
 
-        JuegosPlataformas.moveToFirst();
-        while(!JuegosPlataformas.isAfterLast()){
-            borrarJuegosPlataformas(JuegosPlataformas.getLong(0));
-            JuegosPlataformas.moveToNext();
+        if(JuegosPlataformas.getCount() != 0){
+            JuegosPlataformas.moveToFirst();
+            while(!JuegosPlataformas.isAfterLast()){
+                borrarJuegosPlataformas(JuegosPlataformas.getLong(0));
+                JuegosPlataformas.moveToNext();
+            }
         }
 
         return (bd.delete(BD_TAULA1,CLAVE_ID1 + " = " + idJuego,null)) > 0;
@@ -168,17 +171,25 @@ public class DBInterface {
     //Modificar un juego
     //Controlar los elementos individualmente
 
+    public Cursor obtenerJuegoId(int idJuego) throws SQLException{
+        Cursor mCursor = bd.query(true,BD_TAULA1, new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_ID1 + " = '" + idJuego+"'",null,null,null,null,null);
+        if(mCursor != null){
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
     //Devolver un juego tabla1
 
     /**
      * Obtener un juego a partir de un nombre
      *
-     * @param NombreJuego nombre del juego que deseamos buscar
+     * @param nombreJuego nombre del juego que deseamos buscar
      * @return Cursor
      * @throws SQLException
      */
-    public Cursor obtenerJuego(String NombreJuego) throws SQLException{
-        Cursor mCursor = bd.query(true,BD_TAULA1, new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_NOMBRE1 + " = " + NombreJuego,null,null,null,null,null);
+    public Cursor obtenerJuego(String nombreJuego) throws SQLException{
+        Cursor mCursor = bd.query(true,BD_TAULA1, new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_NOMBRE1 + " = '" + nombreJuego+"'",null,null,null,null,null);
         if(mCursor != null){
             mCursor.moveToFirst();
         }
