@@ -8,9 +8,13 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapRegionDecoder;
+import android.graphics.Picture;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -24,9 +28,10 @@ import cat.paucasesnoves.videojuegoslocos.R;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 
 public class InsertarPlataforma extends AppCompatActivity {
-    DBInterface bd;
+  DBInterface bd;
     Bitmap imatge_bitmap;
     ImageView imagenPlataforma;
+    byte[] bitmapmap;//Contenedor de la info
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +54,9 @@ public class InsertarPlataforma extends AppCompatActivity {
                         != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions((Activity) v.getContext(),
                             new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+                    recullDeGaleria();
+
                 }
-                recullDeGaleria();
             }
         });
 
@@ -85,13 +91,24 @@ public class InsertarPlataforma extends AppCompatActivity {
                 String imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
                 // Transormarem una imatge a bitmap i seguidament a bytes per a guardar-ho a l'objecte i a la BBDD
-                imatge_bitmap = BitmapFactory.decodeFile(imgDecodableString);
+                //imatge_bitmap = BitmapFactory.decodeFile(imgDecodableString);
+               // byte[] pepe = imgDecodableString.getBytes();
+               // Resources direccion = new Resources(getDrawable());
+
+               // direccion = imgDecodableString;
+               // imatge_bitmap = BitmapFactory.decodeResource(imgDecodableString,getResources());
+              //  imatge_bitmap = BitmapFactory.decodeByteArray(pepe,1,1);
+               // Bitmap.;*/
+               /*
+               byte[] pepe = imgDecodableString.getBytes();
+                */
 
                 ByteArrayOutputStream blob = new ByteArrayOutputStream();
                 imatge_bitmap.compress(Bitmap.CompressFormat.JPEG, 0 /* Ignored for PNGs */, blob);
-                byte[] bitmapmap = blob.toByteArray();
+                //La información a guardar es el array de bitmap
+                bitmapmap = blob.toByteArray();
                 imagenPlataforma.setImageBitmap(imatge_bitmap);
-
+                //imagenPlataforma.setVisibility(View.VISIBLE);
             }
         }
 
