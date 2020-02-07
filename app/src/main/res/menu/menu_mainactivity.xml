@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
+    <item android:id="@+id/action_search"
+        android:title="Buscador"
+        android:icon="@drawable/baseline_search_white_18dp"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.widget.SearchView" />
+    <!-- Esta oculto el button de fav
+    Nos logueamos y activamos-->
+    <item android:id="@+id/action_fav"
+        android:title="Favorito"
+        android:icon="@drawable/baseline_star_white_18dp"
+        android:visible="false"
+        app:showAsAction="ifRoom|collapseActionView"/>
+    <!-- Solo me muestra dos de los button puede ser por limite de espacio  -->
+    <item android:id="@+id/account_circle"
+        android:title="Cuenta"
+        android:icon="@drawable/baseline_account_circle_white_18dp"
+        app:showAsAction="ifRoom|collapseActionView"/>
+
+
+
     <item
         android:id="@+id/insertarJuego"
         android:title="Insertar"></item>
