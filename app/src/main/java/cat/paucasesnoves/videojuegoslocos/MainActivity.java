@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.insertarJuego:
                 insertarJuego();
                 return true;
-            case R.id.modifiacrJuego:
+            case R.id.modificarJuego:
                 modificarJuego();
                 return true;
             default:

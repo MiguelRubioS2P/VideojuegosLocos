@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acciones.MenuJuego"></activity>
+        <activity android:name=".acciones.MenuJuego"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".acciones.InsertarJuego" />
-        <activity android:name=".acciones.InsertarGenero" />
-        <activity android:name=".acciones.InsertarPlataforma" />
+        <activity android:name=".acciones.InsertarGenero"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".acciones.InsertarPlataforma"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".entitats.GestorFavoritos" />
         <activity android:name=".itemJuego" />
-        <activity android:name=".Juegos" />
+        <activity android:name=".Juegos"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
