@@ -9,6 +9,12 @@
     <string name="app_Nintendo">Nintendo</string>
     <string name="app_PC">PC</string>
     <string name="insertar_plat">Insertar Plataforma</string>
+    <string name="insertar_gen">Insertar Genero</string>
+    <string name="menu_juego">Menu Insertar Juego</string>
+    <string name="nuevo_juego">Insertar Juego</string>
+    <string name="nuevo_genero">Relacionar Genero</string>
+    <string name="nuevo_plataforma">Relacionar Plataforma</string>
+
 
 
 </resources>
