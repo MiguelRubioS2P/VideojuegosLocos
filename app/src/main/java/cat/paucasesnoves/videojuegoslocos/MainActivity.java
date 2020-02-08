@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import cat.paucasesnoves.videojuegoslocos.acciones.InsertarGenero;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarPlataforma;
+import cat.paucasesnoves.videojuegoslocos.acciones.MenuJuego;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 import cat.paucasesnoves.videojuegoslocos.entitats.GestorFavoritos;
 
@@ -71,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
     public void NuevoGenero(){
-        Intent i = new Intent(this,Juegos.class);
+        Intent i = new Intent(this, InsertarGenero.class);
         startActivity(i);
     }
     public void insertarJuego(){
-        Intent i = new Intent(this,Juegos.class);
+        Intent i = new Intent(this, MenuJuego.class);
         startActivity(i);
     }
     public void modificarJuego(){
@@ -151,10 +153,11 @@ public class MainActivity extends AppCompatActivity {
         btnXbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Toast toast1;
                 toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre Xbox", Toast.LENGTH_SHORT);
                 toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
-
+                */
                 Intent i = new Intent(v.getContext(), Juegos.class);
                 i.putExtra("Id", 2);
                 startActivity(i);
@@ -166,24 +169,26 @@ public class MainActivity extends AppCompatActivity {
         btnNintendo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Toast toast1;
                 toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre Nintendo", Toast.LENGTH_SHORT);
                 toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
-
+                */
                 Intent i = new Intent(v.getContext(), Juegos.class);
-                i.putExtra("Id", 3);
+                i.putExtra("Id", 4);
                 startActivity(i);
             }
         });
         btnPc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Toast toast1;
                 toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre PC", Toast.LENGTH_SHORT);
                 toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
-
+                */
                 Intent i = new Intent(v.getContext(), Juegos.class);
-                i.putExtra("Id", 4);
+                i.putExtra("Id", 3);
                 startActivity(i);
             }
         });

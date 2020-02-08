@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acciones.InsertarJuego"></activity>
+        <activity android:name=".acciones.MenuJuego"></activity>
+        <activity android:name=".acciones.InsertarJuego" />
         <activity android:name=".acciones.InsertarGenero" />
         <activity android:name=".acciones.InsertarPlataforma" />
         <activity android:name=".entitats.GestorFavoritos" />
@@ -23,6 +24,7 @@
             </intent-filter>
         </activity>
     </application>
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
