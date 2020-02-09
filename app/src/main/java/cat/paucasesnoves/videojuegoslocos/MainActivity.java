@@ -15,6 +15,7 @@ import android.widget.Toast;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarGenero;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarPlataforma;
 import cat.paucasesnoves.videojuegoslocos.acciones.MenuJuego;
+import cat.paucasesnoves.videojuegoslocos.acciones.ModificarJuego;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 import cat.paucasesnoves.videojuegoslocos.entitats.GestorFavoritos;
 
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
     public void modificarJuego(){
-        Intent i = new Intent(this,Juegos.class);
+        Intent i = new Intent(this, ModificarJuego.class);
         startActivity(i);
     }
 

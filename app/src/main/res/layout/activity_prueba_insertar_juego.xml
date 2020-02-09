@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".acciones.PruebaIncluirJuego">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvPruebaTitulo"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/negro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insertar Juego"
+            android:layout_centerHorizontal="true"></TextView>
+
+        <LinearLayout
+            android:id="@+id/llPruebaBloqueNombreJuego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPruebaTitulo"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Prueba Nombre :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                ></TextView>
+
+            <EditText
+                android:id="@+id/etPruebaNombreJuego"
+                android:hint="Introduce su nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                ></EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPruebaBloqueDescripcionJuego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llPruebaBloqueNombreJuego"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="Prueba Descripción: "
+                android:gravity="center_horizontal"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></TextView>
+
+            <EditText
+                android:id="@+id/etPruebaDescripcionJuego"
+                android:hint="Introduzca una descripción..."
+                android:gravity="center"
+                android:minHeight="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPruebaBloquePrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_below="@+id/llPruebaBloqueDescripcionJuego">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Prueba Precio: "
+                android:textColor="@color/negro"
+                ></TextView>
+
+            <EditText
+                android:id="@+id/etPruebaPrecioJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Introduce un precio"
+                android:inputType="number"
+                ></EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPruebaBloqueImagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llPruebaBloquePrecio"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnPruebaImagenJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar Imagen..."
+                android:gravity="center"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                ></Button>
+
+            <ImageView
+                android:id="@+id/ivPruebaImagenJuego"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:visibility="gone"
+                ></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPruebaBloqueGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/llPruebaBloqueImagen"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnPruebaDialogoGeneros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/negro"
+                android:text="Géneros"></Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPruebaBloquePlataforma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/llPruebaBloqueGenero"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnPruebaDialogoPlataformas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/negro"
+                android:text="Plataformas"></Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPruebaBloqueInsertarJuego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/llPruebaBloquePlataforma"
+            android:gravity="center"
+            >
+
+            <Button
+                android:id="@+id/btnPruebaInsertarJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insertar"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                ></Button>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
