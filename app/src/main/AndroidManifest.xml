@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".acciones.MenuJuego"
             android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".acciones.IncluirJuePlat"></activity>
+        <activity android:name=".acciones.IncluirJueGen" />
         <activity android:name=".acciones.InsertarJuego" />
         <activity android:name=".acciones.InsertarGenero"
             android:parentActivityName=".MainActivity"/>

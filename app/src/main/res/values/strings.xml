@@ -14,7 +14,9 @@
     <string name="nuevo_juego">Insertar Juego</string>
     <string name="nuevo_genero">Relacionar Genero</string>
     <string name="nuevo_plataforma">Relacionar Plataforma</string>
-
+    <string name="in_new_game">Insertar Nuevo Juego</string>
+    <string name="insertar_gen_jue">Insertar Genero al Juego</string>
+    <string name="insertar_plat_jue">Incluir Plataforma</string>
 
 
 </resources>
