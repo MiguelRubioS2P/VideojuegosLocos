@@ -4,6 +4,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/negro"
     tools:context=".acciones.InsertarJuego">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-52dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnBuscarJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="127dp"
+                android:layout_marginLeft="127dp"
+                android:layout_marginEnd="128dp"
+                android:layout_marginRight="128dp"
+                android:gravity="center"
+                android:text="Buscar Imagen . . ."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/precioJuego" />
+
+            <Button
+                android:id="@+id/btnConfirmarJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="138dp"
+                android:layout_marginLeft="138dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="136dp"
+                android:layout_marginRight="136dp"
+                android:layout_marginBottom="9dp"
+                android:gravity="center"
+                android:text="Insertar Juego"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgJuego"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/nombreJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="100dp"
+                android:hint="Introduzca nombre ... "
+                android:text=""
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/blanco"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/textoJuego"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/descripcionJuego"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="172dp"
+                android:layout_marginEnd="51dp"
+                android:layout_marginRight="51dp"
+                android:background="@color/azulSuave"
+                android:gravity="center"
+                android:hint="Introduzca descripcion del juego ... "
+                android:minHeight="80dp"
+                android:text=""
+                android:textColor="@color/negro"
+                android:textColorHint="@color/negro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/precioJuego"
+                android:layout_width="88dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginEnd="117dp"
+                android:layout_marginRight="117dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/blanco"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textoPrecio"
+                app:layout_constraintTop_toBottomOf="@+id/descripcionJuego" />
+
+            <ImageView
+                android:id="@+id/imgJuego"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="159dp"
+                android:layout_marginLeft="159dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="162dp"
+                android:layout_marginRight="162dp"
+                android:layout_marginBottom="233dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnBuscarJuego"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/LogoJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/in_new_game"
+                android:textColor="@color/blanco"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.36"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.042" />
+
+            <TextView
+                android:id="@+id/textoJuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="112dp"
+                android:gravity="center"
+                android:text="Nombre Juego : "
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/texoDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="128dp"
+                android:layout_marginLeft="128dp"
+                android:layout_marginTop="152dp"
+                android:layout_marginEnd="133dp"
+                android:layout_marginRight="133dp"
+                android:gravity="center"
+                android:text="Descripcion del Juego : "
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textoPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="104dp"
+                android:layout_marginLeft="104dp"
+                android:layout_marginTop="268dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginRight="9dp"
+                android:gravity="center"
+                android:text="Precio Juego : "
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/precioJuego"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
