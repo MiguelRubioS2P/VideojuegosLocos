@@ -1,5 +1,6 @@
 package cat.paucasesnoves.videojuegoslocos.Fragment;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +14,12 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
 import cat.paucasesnoves.videojuegoslocos.R;
+import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 
 public class ListaFragment extends Fragment {
+    private DBInterface db;
     private ArrayList<String> lista;
+    private ArrayList<Integer> listaIdJuegos;
     private ListView lvLista;
     private JuegosListener listener;
 
@@ -30,9 +34,28 @@ public class ListaFragment extends Fragment {
 
         lvLista = getView().findViewById(R.id.lvListaFragmento);
         lista = new ArrayList<>();
-        lista.add("Prueba1");
+        listaIdJuegos = new ArrayList<>();
+        Cursor juego = null;
+        db = new DBInterface(getContext());
+        db.abrir();
+        //nintendo 4
+        //prueba
+        Cursor juegosPlataforma = db.obtenerJuegosPlataformas(4);
+        //estoy guardando todas las id de los juegos que estan para la plataforma con id 4
+        while(!juegosPlataforma.isAfterLast()){
+            listaIdJuegos.add(juegosPlataforma.getInt(1));
+            juegosPlataforma.moveToNext();
+        }
+
+        for (int i = 0; i < listaIdJuegos.size(); i++){
+            juego = db.obtenerJuegoId(listaIdJuegos.get(i));
+            lista.add(juego.getString(1));
+        }
+
+        db.cerrar();
+        /*lista.add("Prueba1");
         lista.add("Prueba2");
-        lista.add("Prueba3");
+        lista.add("Prueba3");*/
 
         lvLista.setAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,lista));
 

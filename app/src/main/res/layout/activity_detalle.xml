@@ -13,7 +13,7 @@
             android:textColor="@color/negro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Insertar Juego"
+            android:text="Modificar Juego"
             android:layout_centerHorizontal="true"></TextView>
 
         <LinearLayout
@@ -25,7 +25,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Prueba Nombre :"
+                android:text="Nombre :"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/negro"
@@ -50,7 +50,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="Prueba Descripción: "
+                android:text="Descripción: "
                 android:gravity="center_horizontal"
                 android:textColor="@color/negro"
                 android:textStyle="bold"
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Prueba Precio: "
+                android:text="Precio: "
                 android:textColor="@color/negro"
                 ></TextView>
 
@@ -161,7 +161,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/llDetalleBloqueInsertarJuego"
+            android:id="@+id/llDetalleBloqueModificarJuego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -170,10 +170,10 @@
             >
 
             <Button
-                android:id="@+id/btnDetalleInsertarJuego"
+                android:id="@+id/btnDetalleModificarJuego"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Insertar"
+                android:text="Modificar"
                 android:textColor="@color/negro"
                 android:textStyle="bold"
                 ></Button>

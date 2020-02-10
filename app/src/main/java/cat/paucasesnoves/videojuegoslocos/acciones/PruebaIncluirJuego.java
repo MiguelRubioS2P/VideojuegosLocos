@@ -35,11 +35,7 @@ import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 public class PruebaIncluirJuego extends AppCompatActivity {
 
     DBInterface db;
-    LinearLayout layoutGenero;
-    LinearLayout layoutPlataforma;
     CheckBox checkBox;
-    TextView tvGenero;
-    TextView tvPlataforma;
     ArrayList<String> generosList;
     ArrayList<String> plataformasList;
     ArrayList<Integer> generosListNumeros;
@@ -70,10 +66,6 @@ public class PruebaIncluirJuego extends AppCompatActivity {
         btnDialogoPlataformas = findViewById(R.id.btnPruebaDialogoPlataformas);
 
         imagenJuego = findViewById(R.id.ivPruebaImagenJuego);
-
-        //obtenemos la referencia del layouy
-        layoutGenero = findViewById(R.id.llPruebaBloqueGenero);
-        layoutPlataforma = findViewById(R.id.llPruebaBloquePlataforma);
 
         generosList = new ArrayList<>();
         plataformasList = new ArrayList<>();
@@ -106,28 +98,6 @@ public class PruebaIncluirJuego extends AppCompatActivity {
                 ((BitmapDrawable)imagenJuego.getDrawable()).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, baos);
                 //Lo guardamos en un array de byte[]
                 byte[] foto = baos.toByteArray();
-                //prueba de obtencion de valores
-                /*Toast.makeText(getApplicationContext(),"Resultado es: " + nombre,Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),"Resultado es: " + descripcion,Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),"Resultado es: " + precio,Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),"Resultado es: " + foto,Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),"Resultado es: " + favorito,Toast.LENGTH_SHORT).show();
-
-                if (generosListNumeros.size() != 0){
-                    for (int i = 0 ;i < generosListNumeros.size();i++){
-                        Toast.makeText(getApplicationContext(),"El valor es: " + generosListNumeros.get(i),Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(getApplicationContext(),"No hay generos seleccionados",Toast.LENGTH_SHORT).show();
-                }
-
-                if (plataformasListNumeros.size() != 0){
-                    for (int i = 0 ;i < plataformasListNumeros.size();i++){
-                        Toast.makeText(getApplicationContext(),"El valor es: " + plataformasListNumeros.get(i),Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(getApplicationContext(),"No hay plataformas seleccionados",Toast.LENGTH_SHORT).show();
-                }*/
                 db.abrir();
                 //lo tocho el insert
                 Cursor resultado = db.insertarJuego(nombre, descripcion, precio , foto,favorito);
@@ -179,8 +149,7 @@ public class PruebaIncluirJuego extends AppCompatActivity {
         //cerramos la conexión
         db.cerrar();
 
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
+
 
     }
 

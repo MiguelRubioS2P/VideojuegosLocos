@@ -29,6 +29,7 @@ public class ModificarJuego extends AppCompatActivity implements ListaFragment.J
             ((DetalleFragment) getSupportFragmentManager().findFragmentById(R.id.FrgDetalle)).mostrarDetalle(juego);
         }else {
             Intent i = new Intent(this, DetalleActivity.class);
+            i.putExtra("nombreJuego",juego);
             startActivity(i);
         }
     }
