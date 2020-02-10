@@ -155,6 +155,8 @@ public class InsertarPlataforma extends AppCompatActivity {
              //   imagenPlataforma.setImageBitmap(imatge_bitmap);*/
                 //imagenPlataforma.setVisibility(View.VISIBLE);
             }
+        }else{
+            Toast.makeText(getApplicationContext(),"No has elegido una imagen",Toast.LENGTH_SHORT).show();
         }
 
 

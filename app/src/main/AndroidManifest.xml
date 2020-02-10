@@ -11,14 +11,18 @@
         android:theme="@style/AppTheme">
         <activity android:name=".acciones.EliminarJuego"></activity>
         <activity android:name=".acciones.IncluirJuePlat" />
+        <activity android:name=".acciones.MenuJuego"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".acciones.IncluirJueGen" />
-        <activity android:name=".acciones.MenuJuego" />
         <activity android:name=".acciones.InsertarJuego" />
-        <activity android:name=".acciones.InsertarGenero" />
-        <activity android:name=".acciones.InsertarPlataforma" />
+        <activity android:name=".acciones.InsertarGenero"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".acciones.InsertarPlataforma"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".entitats.GestorFavoritos" />
         <activity android:name=".itemJuego" />
-        <activity android:name=".Juegos" />
+        <activity android:name=".Juegos"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".acciones.PruebaIncluirJuego"></activity>
+        <activity android:name=".acciones.ModificarJuego"></activity>
+        <activity android:name=".Fragment.DetalleActivity"></activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
