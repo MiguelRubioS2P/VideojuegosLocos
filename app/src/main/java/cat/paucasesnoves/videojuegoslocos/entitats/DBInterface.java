@@ -208,6 +208,14 @@ public class DBInterface {
         return bd.query(BD_TAULA1,new String[]{CLAVE_ID1,CLAVE_NOMBRE1,CLAVE_DESCRIPCION1,CLAVE_PRECIO1,CLAVE_IMAGEN1,CLAVE_FAVORITO1},CLAVE_FAVORITO1 + " = 'True'",null,null,null,null,null);
     }
 
+    public boolean actualizaJuego(int idJuego,String nombreJuego,String descripcionJuego,int precioJuego,byte[] imagenJuego){
+        ContentValues args = new ContentValues();
+        args.put(CLAVE_NOMBRE1,nombreJuego);
+        args.put(CLAVE_DESCRIPCION1,descripcionJuego);
+        args.put(CLAVE_PRECIO1,precioJuego);
+        args.put(CLAVE_IMAGEN1,imagenJuego);
+        return bd.update(BD_TAULA1,args,CLAVE_ID1 + " = " + idJuego,null) > 0;
+    }
 
     //Insertar una plataforma tabla3
     //PC,Switch,Xbox,Playstation
