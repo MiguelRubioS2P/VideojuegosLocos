@@ -69,6 +69,7 @@
                     android:hint="Introduzca una descripción..."
                     android:gravity="center"
                     android:minHeight="80dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     ></EditText>
@@ -126,56 +127,16 @@
                     android:visibility="gone"
                     ></ImageView>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llModificarBloqueGenero"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/llModificarBloqueImagen"
-                android:gravity="center">
-
                 <Button
-                    android:id="@+id/btnModificarDialogoGeneros"
+                    android:id="@+id/btnModificarModificarJuego"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textStyle="bold"
+                    android:text="Modificar"
                     android:textColor="@color/negro"
-                    android:text="Géneros"></Button>
+                    android:textStyle="bold"></Button>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/llModificarBloquePlataforma"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/llModificarBloqueGenero"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/btnModificarDialogoPlataformas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/negro"
-                    android:text="Plataformas"></Button>
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnModificarModificarJuego"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:text="Modificar"
-                android:textColor="@color/negro"
-                android:textStyle="bold"
-                ></Button>
 
         </RelativeLayout>
     </ScrollView>
