@@ -27,8 +27,9 @@ public class Juegos extends AppCompatActivity {
     //Declaro el text view
     TextView plataformaActual;
     //Declaro la lista de los juegos
-    ListView juegos;
+    ListView juegos,listadoJuegos;
     //Cuando se crea a vista
+    SimpleAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Iniciar el layout
@@ -97,9 +98,9 @@ private void saberPlataforma(){
         bd = new DBInterface(getApplicationContext());
         bd.abrir();
         //Solicitamos todos los Juegos referente a una plataforma
-        Cursor c = bd.obtenerJuegosPlataformas(plat);
+        Cursor c = bd.obtenerJuegosPlataformas(plat); //Ya el metodo da la primera opcion
         //Obtenemos el primer valor
-        c.moveToFirst();
+       // c.moveToFirst();
 
         //Contenedor del listado de juegos
         ArrayList<HashMap<String,String>> llista = new ArrayList<HashMap<String, String>>();
@@ -115,18 +116,18 @@ private void saberPlataforma(){
         }
 
         //Recorremos el array del listado anterior
+
         for (int p : idJuego) {
             //Obtenemos los resultados que nos de
-            Cursor a = bd.obtenerJuegoId(plat);
+            Cursor a = bd.obtenerJuegoId(p);
             //Pasamos al primer resultado
-            a.moveToFirst();
             //HashMap que contendrá la info de los juegos
             HashMap<String,String> map = new HashMap<>();
             //Ponemos la información según la necesitamos
             map.put("id",a.getString(0));
             map.put("nombre",a.getString(1));
             map.put("descripcion",a.getString(2));
-            map.put("precio",a.getString(3));
+            map.put("precio",String.valueOf(a.getInt(3)));
             //Pasamos el byte[] a String
             String imagen = new String(a.getBlob(4));
             map.put("imagen",imagen);
@@ -135,10 +136,28 @@ private void saberPlataforma(){
             //byte[] by_new = imagen.getBytes();
             //Añadimos al HashMap general
             llista.add(map);
-        }
-        bd.cerrar();
-        //juegos = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_item_juego, new String[]{"id","nom","email"},new int[]{R.id.id_item_lista,R.id.nombre_item_lista,R.id.email_item_lista});
+            a.moveToNext();
 
+        }
+
+        /*
+        int i = 0;
+        while(i != idJuego.size()){
+            Cursor a = bd.obtenerJuegoId(plat);
+            HashMap<String,String> map = new HashMap<>();
+            map.put("nombre",a.getString(1));
+            a.moveToNext();
+            llista.add(map);
+            i++;
+        }
+*/
+        bd.cerrar();
+        /*
+        adapter = new SimpleAdapter(getApplicationContext(), llista, R.layout.activity_item_juego, new String[]{"id","nombre","precio"},new int[]{R.id.idJuegoLista,R.id.nombreJuego,R.id.precioJuego});
+        */
+        adapter =new SimpleAdapter(getApplicationContext(),llista , R.layout.activity_item_juego,new String[]{"favorito","imagen"},new int[]{R.id.nombreJuego,R.id.imgJuego});
+        listadoJuegos = findViewById(R.id.listadoJuegos);
+        listadoJuegos.setAdapter(adapter);
 
 
         /*

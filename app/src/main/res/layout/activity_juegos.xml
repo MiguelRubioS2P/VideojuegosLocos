@@ -40,26 +40,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ViewAnimator
-        android:id="@+id/sample_output"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1">
+
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ListView
-                android:id="@+id/C"
+                android:id="@+id/listadoJuegos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:divider="#000"
+                android:textColor="@color/blanco"
                 android:dividerHeight="2dp"/>
 
         </ScrollView>
 
-    </ViewAnimator>
 
 
     </LinearLayout>

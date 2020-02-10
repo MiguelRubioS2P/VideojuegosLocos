@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import cat.paucasesnoves.videojuegoslocos.acciones.EliminarJuego;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarGenero;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarPlataforma;
 import cat.paucasesnoves.videojuegoslocos.acciones.MenuJuego;
@@ -84,7 +85,10 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this,Juegos.class);
         startActivity(i);
     }
-
+    public void eliminarJuego(){
+        Intent i = new Intent(this, EliminarJuego.class);
+        startActivity(i);
+    }
     //Gestionar las opciones del Menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -102,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.modifiacrJuego:
                 modificarJuego();
                 return true;
+            case R.id.eliminarJuego:
+                 eliminarJuego();
+                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

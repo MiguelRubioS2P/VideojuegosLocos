@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acciones.IncluirJuePlat"></activity>
+        <activity android:name=".acciones.EliminarJuego"></activity>
+        <activity android:name=".acciones.IncluirJuePlat" />
         <activity android:name=".acciones.IncluirJueGen" />
         <activity android:name=".acciones.MenuJuego" />
         <activity android:name=".acciones.InsertarJuego" />
