@@ -21,7 +21,7 @@ public class DetalleActivity extends AppCompatActivity {
     String juego;
     private DBInterface db;
     EditText nombreJuego,descripcionJuego,precioJuego;
-    Button btnImagenJuego, btnGenerosJuego, btnPlataformasJuego,btnModificarJuego;
+    Button btnImagenJuego,btnModificarJuego;
     ImageView imagenJuego;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,6 @@ public class DetalleActivity extends AppCompatActivity {
         descripcionJuego = findViewById(R.id.etDetalleDescripcionJuego);
         precioJuego = findViewById(R.id.etDetallePrecioJuego);
         btnImagenJuego = findViewById(R.id.btnDetalleImagenJuego);
-        btnGenerosJuego = findViewById(R.id.btnDetalleDialogoGeneros);
-        btnPlataformasJuego = findViewById(R.id.btnDetalleDialogoPlataformas);
         btnModificarJuego = findViewById(R.id.btnDetalleModificarJuego);
         imagenJuego = findViewById(R.id.ivDetalleImagenJuego);
 
