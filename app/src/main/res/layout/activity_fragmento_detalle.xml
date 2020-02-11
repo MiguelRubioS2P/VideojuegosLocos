@@ -69,7 +69,6 @@
                     android:hint="Introduzca una descripción..."
                     android:gravity="center"
                     android:minHeight="80dp"
-                    android:layout_marginBottom="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     ></EditText>

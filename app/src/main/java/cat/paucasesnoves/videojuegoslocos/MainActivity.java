@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,18 +27,75 @@ public class MainActivity extends AppCompatActivity {
 
     private int CODI_PETICIO = 1;//Segunda opcion diferir en el codigo de peticion
     DBInterface db;
+    private Menu globalMenuItem; //Para poder gestion
+    private boolean login = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       //  comprovarLayout();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Comprobar si hay favoritos
+        //Comprobar si hay favoaritos
         //comprobarLayout();
         MenuInicial();
 
 
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Parte de los iconos de la parte de arriba ....
+    public void iniciarSesion( int id){
+        //Cuando se da click hacer visible el cerrar sesion
+        MenuItem nav_dashboard = globalMenuItem.findItem(id);
+        nav_dashboard.setVisible(false);
+
+
+/*
+        globalMenuItem.findItem(R.id.cerrarSesion).setVisible(true);
+
+        globalMenuItem.findItem(R.id.iniciarUser).setVisible(false);*/
+        Toast toast1;
+        toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre la PS4", Toast.LENGTH_SHORT);
+        toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
+
+        toast1.show();
+
+
+        //Cmbiar a clase para iniciar user SharedPreferences
+/*
+        Intent i = new Intent(this, EliminarJuego.class);
+        startActivity(i);
+        */
+    }
+
+    // Esto es para crear el menu apartar de un layout menu
+    @Override public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_usuario,menu);
+        return true;
+    }
+
+    //Gestionar las opciones del Menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            //Iniciar sesion Con un Usuario
+            case R.id.iniciarUser:
+                iniciarSesion(item.getItemId());
+                return true;
+                //Editar la información del Usuario
+            case R.id.editarUser:
+               // NuevoGenero();
+                return true;
+                //Cerrar la sesión del Usuario
+            case R.id.cerrarSesion:
+               // insertarJuego();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     public void comprobarLayout(){
         //Realizar la bd
         db = new DBInterface(getApplicationContext());
@@ -61,59 +119,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Esto es para crear el menu apartar de un layout menu
-    @Override public boolean onCreateOptionsMenu(Menu menu){
-
-        getMenuInflater().inflate(R.menu.menu_mainactivity,menu);
-
-        return true;
-
-    }
-
-    public void NuevaPlataforma(){
-        Intent i = new Intent(this, InsertarPlataforma.class);
-        startActivity(i);
-    }
-    public void NuevoGenero(){
-        Intent i = new Intent(this, InsertarGenero.class);
-        startActivity(i);
-    }
-    public void insertarJuego(){
-        Intent i = new Intent(this, MenuJuego.class);
-        startActivity(i);
-    }
-    public void modificarJuego(){
-        Intent i = new Intent(this, ModificarJuego.class);
-        startActivity(i);
-    }
-    public void eliminarJuego(){
-        Intent i = new Intent(this, EliminarJuego.class);
-        startActivity(i);
-    }
-    //Gestionar las opciones del Menu
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.insertarPlataforma:
-                NuevaPlataforma();
-                return true;
-            case R.id.insertarGenero:
-                NuevoGenero();
-                return true;
-            case R.id.insertarJuego:
-                insertarJuego();
-                return true;
-            case R.id.modificarJuego:
-                modificarJuego();
-                return true;
-            case R.id.eliminarJuego:
-                 eliminarJuego();
-                 return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
     public void plataforma(int plat){
         System.out.println("numero" + plat);
     }

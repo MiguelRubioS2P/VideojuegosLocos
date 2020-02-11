@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -19,6 +21,11 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import cat.paucasesnoves.videojuegoslocos.acciones.EliminarJuego;
+import cat.paucasesnoves.videojuegoslocos.acciones.InsertarGenero;
+import cat.paucasesnoves.videojuegoslocos.acciones.InsertarPlataforma;
+import cat.paucasesnoves.videojuegoslocos.acciones.MenuJuego;
+import cat.paucasesnoves.videojuegoslocos.acciones.ModificarJuego;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 
 public class Juegos extends AppCompatActivity {
@@ -51,6 +58,64 @@ public class Juegos extends AppCompatActivity {
         obtenerJuegosPlataforma();
 
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Parte de los iconos de la parte de arriba ....
+
+
+    // Esto es para crear el menu apartar de un layout menu
+    @Override public boolean onCreateOptionsMenu(Menu menu){
+
+        getMenuInflater().inflate(R.menu.menu_mainactivity,menu);
+
+        return true;
+
+    }
+
+    public void NuevaPlataforma(){
+        Intent i = new Intent(this, InsertarPlataforma.class);
+        startActivity(i);
+    }
+    public void NuevoGenero(){
+        Intent i = new Intent(this, InsertarGenero.class);
+        startActivity(i);
+    }
+    public void insertarJuego(){
+        Intent i = new Intent(this, MenuJuego.class);
+        startActivity(i);
+    }
+    public void modificarJuego(){
+        Intent i = new Intent(this, ModificarJuego.class);
+        startActivity(i);
+    }
+    public void eliminarJuego(){
+        Intent i = new Intent(this, EliminarJuego.class);
+        startActivity(i);
+    }
+    //Gestionar las opciones del Menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.insertarPlataforma:
+                NuevaPlataforma();
+                return true;
+            case R.id.insertarGenero:
+                NuevoGenero();
+                return true;
+            case R.id.insertarJuego:
+                insertarJuego();
+                return true;
+            case R.id.modificarJuego:
+                modificarJuego();
+                return true;
+            case R.id.eliminarJuego:
+                eliminarJuego();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 private void saberPlataforma(){
     switch (plat) {
