@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
 import cat.paucasesnoves.videojuegoslocos.Fragment.DetalleActivity;
 import cat.paucasesnoves.videojuegoslocos.Fragment.DetalleFragment;
@@ -35,6 +38,26 @@ public class ModificarJuego extends AppCompatActivity implements ListaFragment.J
     @Override public boolean onCreateOptionsMenu(Menu menu){
 
         getMenuInflater().inflate(R.menu.menu_mainactivity,menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint("Buscador");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                //Toast.makeText(getApplicationContext(),"Hola " + s,Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), DetalleActivity.class);
+                i.putExtra("nombreJuego",s);
+                i.putExtra("idPlataforma",idPlataforma);
+                startActivity(i);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                //Toast.makeText(getApplicationContext(),"Hola " + s,Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
         return true;
 

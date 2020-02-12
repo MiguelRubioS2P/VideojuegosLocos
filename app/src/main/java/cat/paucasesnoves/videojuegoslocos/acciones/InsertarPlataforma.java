@@ -17,6 +17,7 @@ import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -31,7 +32,8 @@ import cat.paucasesnoves.videojuegoslocos.R;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 
 public class InsertarPlataforma extends AppCompatActivity {
-  DBInterface bd;
+    private static final int CALLBACK_STORAGE = 666;
+    DBInterface bd;
     Bitmap imatge_bitmap;
     ImageView imagenPlataforma;
     byte[] bitmapmap;//Contenedor de la info
@@ -58,13 +60,14 @@ public class InsertarPlataforma extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Comprobar si hay permiso . . .
-                if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                /*if (ContextCompat.checkSelfPermission(v.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions((Activity) v.getContext(),
                             new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
 
                 }
-                recullDeGaleria();
+                recullDeGaleria();*/
+                pedirPermisosStorage();
 
             }
         });
@@ -160,5 +163,41 @@ public class InsertarPlataforma extends AppCompatActivity {
         }
 
 
+    }
+
+    public void pedirPermisosStorage(){
+        if(demanaPermisos()){
+            int permissionCheck = ContextCompat.checkSelfPermission(InsertarPlataforma.this,Manifest.permission.READ_EXTERNAL_STORAGE);
+            if(permissionCheck != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(InsertarPlataforma.this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},CALLBACK_STORAGE);
+            }else {
+                recullDeGaleria();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case CALLBACK_STORAGE: {
+                // Si es cancela la petició l'aray de tornada es buit.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    // permís concedit
+                    Toast.makeText(getApplicationContext(),"Permisos concedidos de calendario", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    // permís denegat
+                    // Desactivar la funcionalitat relacionada amb el permís
+                    Toast.makeText(getApplicationContext(),"Permisos no concedidos de calendario", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+        }
+    }
+
+    private boolean demanaPermisos(){
+        return(Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1);
     }
 }
