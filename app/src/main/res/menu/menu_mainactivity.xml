@@ -10,9 +10,9 @@
         app:actionViewClass="android.widget.SearchView" />
     <!-- Esta oculto el button de fav
     Nos logueamos y activamos-->
-    <item android:id="@+id/usuarioLogin"
+ <!--   <item android:id="@+id/usuarioLogin"
         android:title="Jose"
-        app:showAsAction="ifRoom|collapseActionView"/>
+        app:showAsAction="ifRoom|collapseActionView"/> -->
     <item android:id="@+id/action_fav"
         android:title="Favorito"
         android:icon="@drawable/baseline_star_white_18dp"

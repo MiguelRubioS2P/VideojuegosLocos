@@ -9,20 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acciones.EliminarJuego"></activity>
+        <activity android:name=".SharedPreferences.Login"></activity>
+        <activity android:name=".acciones.EliminarJuego" />
         <activity android:name=".acciones.IncluirJuePlat" />
-        <activity android:name=".acciones.MenuJuego"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".acciones.MenuJuego"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".acciones.IncluirJueGen" />
         <activity android:name=".acciones.InsertarJuego" />
-        <activity android:name=".acciones.InsertarGenero"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".acciones.InsertarPlataforma"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".acciones.InsertarGenero"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".acciones.InsertarPlataforma"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".entitats.GestorFavoritos" />
         <activity android:name=".itemJuego" />
-        <activity android:name=".Juegos"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Juegos"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".acciones.PruebaIncluirJuego"></activity>
-        <activity android:name=".acciones.ModificarJuego"></activity>
-        <activity android:name=".Fragment.DetalleActivity"></activity>
+        <activity android:name=".acciones.PruebaIncluirJuego" />
+        <activity android:name=".acciones.ModificarJuego" />
+        <activity android:name=".Fragment.DetalleActivity" />
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

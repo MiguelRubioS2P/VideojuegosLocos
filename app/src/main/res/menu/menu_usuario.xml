@@ -10,26 +10,10 @@
         app:showAsAction="ifRoom|collapseActionView"
         android:title="TODO" />
 
-    <!-- Item para modificar el item el nombre de Usuario -->
-    <item android:id="@+id/usuarioLogin"
-        android:title="Jose"
-        android:visible="false"
-        app:showAsAction="ifRoom|collapseActionView"/>
 
     <item
         android:id="@+id/iniciarUser"
         android:visible="true"
         android:title="Login"></item>
-    <!-- Si no se esta Logueado no se puede editar el User ni Cerrar Sesion -->
-    <item
-        android:id="@+id/editarUser"
-        android:visible="false"
-        android:title="Modificar User"></item>
-    <item
-        android:id="@+id/cerrarSesion"
-        android:visible="false"
-        android:iconTint="@color/negro"
-        android:title="Logout"></item>
-
 
 </menu>
