@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Juegos">
     <item android:id="@+id/action_search"
-        android:title="Buscador"
         android:icon="@drawable/baseline_search_white_18dp"
         app:showAsAction="ifRoom|collapseActionView"
-        app:actionViewClass="android.widget.SearchView" />
+        app:actionViewClass="android.widget.SearchView"
+        tools:ignore="HardcodedText,MenuTitle" />
     <!-- Esta oculto el button de fav
     Nos logueamos y activamos-->
  <!--   <item android:id="@+id/usuarioLogin"

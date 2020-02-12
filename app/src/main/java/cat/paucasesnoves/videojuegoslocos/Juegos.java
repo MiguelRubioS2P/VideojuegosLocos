@@ -1,7 +1,10 @@
 package cat.paucasesnoves.videojuegoslocos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -12,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +25,14 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import cat.paucasesnoves.videojuegoslocos.Fragment.DetalleActivity;
 import cat.paucasesnoves.videojuegoslocos.acciones.EliminarJuego;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarGenero;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarPlataforma;
 import cat.paucasesnoves.videojuegoslocos.acciones.MenuJuego;
 import cat.paucasesnoves.videojuegoslocos.acciones.ModificarJuego;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
+import cat.paucasesnoves.videojuegoslocos.entitats.Juego;
 
 public class Juegos extends AppCompatActivity {
     private static int plat;
@@ -37,6 +43,9 @@ public class Juegos extends AppCompatActivity {
     ListView juegos,listadoJuegos;
     //Cuando se crea a vista
     SimpleAdapter adapter;
+    SearchView searchView;
+    private Object SearchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Iniciar el layout
@@ -62,12 +71,16 @@ public class Juegos extends AppCompatActivity {
     //Parte de los iconos de la parte de arriba ....
 
 
-    // Esto es para crear el menu apartar de un layout menu
-    @Override public boolean onCreateOptionsMenu(Menu menu){
 
-        getMenuInflater().inflate(R.menu.menu_mainactivity,menu);
-
-        return true;
+    private void buscar(String juego){
+        bd.abrir();
+        Cursor SearchJuego = bd.obtenerJuego(juego);
+        SearchJuego.moveToFirst();
+        if(SearchJuego.getCount() != 0){
+            Toast.makeText(getApplicationContext(),"Juego encontrado " + SearchJuego.getString(3),Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(),"No encontrado " + SearchJuego.getString(3),Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -91,6 +104,8 @@ public class Juegos extends AppCompatActivity {
         Intent i = new Intent(this, EliminarJuego.class);
         startActivity(i);
     }
+
+
     //Gestionar las opciones del Menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -111,10 +126,13 @@ public class Juegos extends AppCompatActivity {
             case R.id.eliminarJuego:
                 eliminarJuego();
                 return true;
+            case R.id.action_search:
+              //  buscar();
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 
 private void saberPlataforma(){
