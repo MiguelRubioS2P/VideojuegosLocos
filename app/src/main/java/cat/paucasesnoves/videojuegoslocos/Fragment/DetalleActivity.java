@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import java.io.ByteArrayOutputStream;
 
 import cat.paucasesnoves.videojuegoslocos.R;
+import cat.paucasesnoves.videojuegoslocos.acciones.ModificarJuego;
 import cat.paucasesnoves.videojuegoslocos.entitats.DBInterface;
 
 public class DetalleActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class DetalleActivity extends AppCompatActivity {
     Button btnImagenJuego,btnModificarJuego;
     ImageView imagenJuego;
     Cursor juegoCursor;
+    int idPlataforma;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -50,6 +52,8 @@ public class DetalleActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             juego = extras.getString("nombreJuego");
+            idPlataforma = extras.getInt("idPlataforma");
+
         }
 
         db = new DBInterface(getApplication());
@@ -95,6 +99,10 @@ public class DetalleActivity extends AppCompatActivity {
 
                 if(isWorks){
                     Toast.makeText(getApplicationContext(),"Funciona",Toast.LENGTH_SHORT).show();
+                    //cargamos el intent de la lista de jogos
+                    Intent i = new Intent(view.getContext(), ModificarJuego.class);
+                    i.putExtra("Id",idPlataforma);
+                    startActivity(i);
                 }else{
                     Toast.makeText(getApplicationContext(),"No Funciona",Toast.LENGTH_SHORT).show();
                 }

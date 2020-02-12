@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imatge"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:contentDescription="Imatge esdeveniment" />
+
+        <LinearLayout
+            android:id="@+id/descPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/imatge">
+
+            <TextView
+                android:id="@+id/nom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Nom"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tipus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Tipus"
+                android:textSize="15sp" />
+
+
+            <LinearLayout
+                android:id="@+id/infoPart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descPart"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="Data" />
+
+                <TextView
+                    android:id="@+id/nota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_below="@id/data"
+                    android:layout_marginRight="15dp"
+                    android:layout_toRightOf="@id/data"
+                    android:text="Nota" />
+
+                <TextView
+                    android:id="@+id/preu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="15dp"
+                    android:layout_toRightOf="@id/nota"
+                    android:layout_weight="1"
+                    android:text="Preu"
+                    android:textColor="@android:color/holo_green_dark" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

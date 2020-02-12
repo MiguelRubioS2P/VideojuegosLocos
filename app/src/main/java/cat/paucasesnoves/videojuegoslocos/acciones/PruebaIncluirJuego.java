@@ -40,16 +40,23 @@ public class PruebaIncluirJuego extends AppCompatActivity {
     ArrayList<String> plataformasList;
     ArrayList<Integer> generosListNumeros;
     ArrayList<Integer> plataformasListNumeros;
+    int controlador = 0;
 
     EditText nombreJuego,descripcionJuego,precioJuego;
     ImageView imagenJuego;
     Button btnImagen, btnInsertar,btnDialogoGeneros,btnDialogoPlataformas;
+    int idPlataforma;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prueba_insertar_juego);
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            idPlataforma = extras.getInt("idPlataforma");
+        }
 
         //db clase
         db = new DBInterface(getApplicationContext());
@@ -112,6 +119,7 @@ public class PruebaIncluirJuego extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(),"El valor es: " + generosListNumeros.get(i),Toast.LENGTH_SHORT).show();
                             db.insertarJuegosGeneros(idJuego,generosListNumeros.get(i));
                         }
+                        controlador = 1;
                     }else{
                         Toast.makeText(getApplicationContext(),"No hay generos seleccionados",Toast.LENGTH_SHORT).show();
                     }
@@ -121,6 +129,7 @@ public class PruebaIncluirJuego extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(),"El valor es: " + plataformasListNumeros.get(i),Toast.LENGTH_SHORT).show();
                             db.insertarJuegosPlataformas(idJuego,plataformasListNumeros.get(i));
                         }
+                        controlador = 2;
                     }else{
                         Toast.makeText(getApplicationContext(),"No hay plataformas seleccionados",Toast.LENGTH_SHORT).show();
                     }
@@ -128,6 +137,12 @@ public class PruebaIncluirJuego extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Error : " + nombreJuego.getText().toString(), Toast.LENGTH_SHORT);
                 }
                 db.cerrar();
+
+                if(controlador == 2){
+                    Intent i = new Intent(getApplicationContext(),ModificarJuego.class);
+                    i.putExtra("Id",idPlataforma);
+                    startActivity(i);
+                }
 
             }
         });

@@ -6,8 +6,8 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/lvListaFragmento">
-
+        android:id="@+id/lvListaFragmento"
+        >
     </ListView>
 
 </LinearLayout>
