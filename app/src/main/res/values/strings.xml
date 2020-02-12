@@ -18,6 +18,8 @@
     <string name="insertar_gen_jue">Insertar Genero al Juego</string>
     <string name="insertar_plat_jue">Incluir Plataforma</string>
     <string name="del_game">Borrar Juego</string>
+    <string name="log_text">Login User</string>
+
 
 
 </resources>

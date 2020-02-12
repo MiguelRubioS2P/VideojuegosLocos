@@ -2,6 +2,7 @@ package cat.paucasesnoves.videojuegoslocos.acciones;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +16,16 @@ public class InsertarGenero extends AppCompatActivity {
     DBInterface bd;
     EditText nombreGen;//Edit Text contenedor del nombre de plataforma . . .
     Toast toast1 = null;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insertar_genero);
         nuevaGenero();
     }
+
 
     private void nuevaGenero() {
 

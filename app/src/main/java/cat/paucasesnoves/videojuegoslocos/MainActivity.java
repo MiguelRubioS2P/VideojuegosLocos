@@ -3,6 +3,7 @@ package cat.paucasesnoves.videojuegoslocos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import cat.paucasesnoves.videojuegoslocos.SharedPreferences.Login;
+import cat.paucasesnoves.videojuegoslocos.SharedPreferences.Usuario;
 import cat.paucasesnoves.videojuegoslocos.acciones.EliminarJuego;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarGenero;
 import cat.paucasesnoves.videojuegoslocos.acciones.InsertarPlataforma;
@@ -24,11 +27,12 @@ import cat.paucasesnoves.videojuegoslocos.entitats.GestorFavoritos;
 import static java.lang.Thread.sleep;
 
 public class MainActivity extends AppCompatActivity {
+    private SharedPreferences prefs;
 
     private int CODI_PETICIO = 1;//Segunda opcion diferir en el codigo de peticion
     DBInterface db;
     private Menu globalMenuItem; //Para poder gestion
-    private boolean login = false;
+    private boolean login = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,27 +44,27 @@ public class MainActivity extends AppCompatActivity {
         //comprobarLayout();
         MenuInicial();
 
-
+        //estado();
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Parte de los iconos de la parte de arriba ....
-    public void iniciarSesion( int id){
+    public void iniciarSesion(){
         //Cuando se da click hacer visible el cerrar sesion
-        MenuItem nav_dashboard = globalMenuItem.findItem(id);
+  /*      MenuItem nav_dashboard = globalMenuItem.findItem(id);
         nav_dashboard.setVisible(false);
+         nav_dashboard = globalMenuItem.findItem(R.id.cerrarSesion);
+        nav_dashboard.setVisible(true);
+*/
 
 
 /*
         globalMenuItem.findItem(R.id.cerrarSesion).setVisible(true);
 
         globalMenuItem.findItem(R.id.iniciarUser).setVisible(false);*/
-        Toast toast1;
-        toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre la PS4", Toast.LENGTH_SHORT);
-        toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
 
-        toast1.show();
-
-
+        login =true;
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
         //Cmbiar a clase para iniciar user SharedPreferences
 /*
         Intent i = new Intent(this, EliminarJuego.class);
@@ -70,10 +74,47 @@ public class MainActivity extends AppCompatActivity {
 
     // Esto es para crear el menu apartar de un layout menu
     @Override public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_usuario,menu);
+        Usuario pepe = new Usuario();
+        Boolean estado = pepe.isEstado();
+        Boolean sesion = comprobarSesion();
+        Bundle extras = getIntent().getExtras();
+        Boolean login = false;
+        if(extras != null) {
+             login = extras.getBoolean("log");
+
+        }
+           // if(estado == false|| sesion == true || login == false) {
+         if( sesion == false) {
+
+              getMenuInflater().inflate(R.menu.menu_usuario, menu);
+        }else{
+            getMenuInflater().inflate(R.menu.user_login, menu);
+            //Obtengo el nombre del Usuario actual . . .
+             prefs = getApplicationContext().getSharedPreferences("Usuarios", MODE_PRIVATE);
+             String usuario = prefs.getString("user",null);
+            menu.findItem(R.id.usuarioLogin).setTitle(usuario);
+
+        }
+
         return true;
     }
-
+    /*
+    public void estado(){
+        Boolean sesion = comprobarSesion();
+        if( sesion == false) {
+            getMenuInflater().inflate(R.menu.menu_usuario, globalMenuItem);
+        }else{
+            getMenuInflater().inflate(R.menu.user_login, globalMenuItem);
+        }
+    }*/
+    public boolean comprobarSesion(){
+        prefs = getApplicationContext().getSharedPreferences("Usuarios", MODE_PRIVATE);
+        Boolean estado = prefs.getBoolean("estado",false);
+        /*
+        Toast toast1 = Toast.makeText(getApplicationContext(),"Esto "+estado, Toast.LENGTH_SHORT);
+        toast1.show();*/
+        return estado;
+    }
     //Gestionar las opciones del Menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             //Iniciar sesion Con un Usuario
             case R.id.iniciarUser:
-                iniciarSesion(item.getItemId());
+                finish();
+                iniciarSesion();
                 return true;
                 //Editar la información del Usuario
             case R.id.editarUser:
@@ -89,11 +131,23 @@ public class MainActivity extends AppCompatActivity {
                 return true;
                 //Cerrar la sesión del Usuario
             case R.id.cerrarSesion:
-               // insertarJuego();
+               Logout();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    //Cerrar sesion
+    public void Logout(){
+        prefs = getApplicationContext().getSharedPreferences("Usuarios", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("estado",false);
+        editor.apply();
+        finish();
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+
     }
 
     public void comprobarLayout(){
