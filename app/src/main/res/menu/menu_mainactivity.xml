@@ -31,9 +31,6 @@
         android:id="@+id/insertarJuego"
         android:title="Insertar"></item>
     <item
-        android:id="@+id/modificarJuego"
-        android:title="Modificar"></item>
-    <item
         android:id="@+id/eliminarJuego"
         android:title="Eliminar"></item>
     <item

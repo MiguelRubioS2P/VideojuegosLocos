@@ -7,8 +7,7 @@
 
     <fragment class="cat.paucasesnoves.videojuegoslocos.Fragment.ListaFragment"
         android:id="@+id/FrgLista"
-        android:layout_weight="30"
-        android:layout_width="0px"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/activity_fragmento_lista"></fragment>
 

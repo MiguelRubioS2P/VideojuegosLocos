@@ -105,9 +105,9 @@ public class Juegos extends AppCompatActivity {
             case R.id.insertarJuego:
                 insertarJuego();
                 return true;
-            case R.id.modificarJuego:
-                modificarJuego();
-                return true;
+//            case R.id.modificarJuego:
+//                modificarJuego();
+//                return true;
             case R.id.eliminarJuego:
                 eliminarJuego();
                 return true;

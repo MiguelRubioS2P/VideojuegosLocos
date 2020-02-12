@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
 */
                 //Pasamos a la clase k gestiona los favoritos . . .
 
-                Intent i = new Intent(v.getContext(), Juegos.class);
+                Intent i = new Intent(v.getContext(), ModificarJuego.class);
                 i.putExtra("Id", 1);
                 startActivityForResult(i,100);
 
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                 toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre Xbox", Toast.LENGTH_SHORT);
                 toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
                 */
-                Intent i = new Intent(v.getContext(), Juegos.class);
+                Intent i = new Intent(v.getContext(), ModificarJuego.class);
                 i.putExtra("Id", 2);
                 startActivity(i);
 
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                 toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre Nintendo", Toast.LENGTH_SHORT);
                 toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
                 */
-                Intent i = new Intent(v.getContext(), Juegos.class);
+                Intent i = new Intent(v.getContext(), ModificarJuego.class);
                 i.putExtra("Id", 4);
                 startActivity(i);
             }
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                 toast1 = Toast.makeText(getApplicationContext(),"Se dio click sobre PC", Toast.LENGTH_SHORT);
                 toast1.setGravity(Gravity.CENTER|Gravity.LEFT,250,50);
                 */
-                Intent i = new Intent(v.getContext(), Juegos.class);
+                Intent i = new Intent(v.getContext(), ModificarJuego.class);
                 i.putExtra("Id", 3);
                 startActivity(i);
             }

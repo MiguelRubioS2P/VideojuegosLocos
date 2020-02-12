@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/negro">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
                 android:id="@+id/tvDetalleTitulo"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:textColor="@color/negro"
+                android:textColor="@color/blanco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Modificar Juego"
@@ -33,15 +34,17 @@
                     android:text="Nombre :"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/negro"
+                    android:textColor="@color/blanco"
                     android:textStyle="bold"
                     ></TextView>
 
                 <EditText
                     android:id="@+id/etDetalleNombreJuego"
                     android:hint="Introduce su nombre"
+                    android:textColorHint="@color/blanco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/blanco"
                     android:gravity="center_horizontal"
                     ></EditText>
 
@@ -57,7 +60,7 @@
                 <TextView
                     android:text="Descripción: "
                     android:gravity="center_horizontal"
-                    android:textColor="@color/negro"
+                    android:textColor="@color/blanco"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -67,6 +70,8 @@
                     android:id="@+id/etDetalleDescripcionJuego"
                     android:hint="Introduzca una descripción..."
                     android:gravity="center"
+                    android:textColorHint="@color/blanco"
+                    android:textColor="@color/blanco"
                     android:minHeight="80dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -87,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:text="Precio: "
-                    android:textColor="@color/negro"
+                    android:textColor="@color/blanco"
                     ></TextView>
 
                 <EditText
@@ -96,6 +101,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Introduce un precio"
                     android:inputType="number"
+                    android:textColor="@color/blanco"
+                    android:textColorHint="@color/blanco"
                     ></EditText>
 
             </LinearLayout>
@@ -125,6 +132,15 @@
                     android:visibility="gone"
                     ></ImageView>
 
+                <Button
+                    android:id="@+id/btnDetalleModificarJuego"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Modificar"
+                    android:textColor="@color/negro"
+                    android:textStyle="bold"
+                    ></Button>
+
             </LinearLayout>
 
 
@@ -135,15 +151,6 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnDetalleModificarJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:text="Modificar"
-        android:textColor="@color/negro"
-        android:textStyle="bold"
-        ></Button>
+
 
 </RelativeLayout>

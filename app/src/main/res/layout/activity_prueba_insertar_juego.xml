@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".acciones.PruebaIncluirJuego"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/negro">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
                 android:id="@+id/tvPruebaTitulo"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:textColor="@color/negro"
+                android:textColor="@color/blanco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Insertar Juego"
@@ -33,16 +34,18 @@
                 android:gravity="center">
 
                 <TextView
-                    android:text="Prueba Nombre :"
+                    android:text="Nombre :"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/negro"
+                    android:textColor="@color/blanco"
                     android:textStyle="bold"
                     ></TextView>
 
                 <EditText
                     android:id="@+id/etPruebaNombreJuego"
                     android:hint="Introduce su nombre"
+                    android:textColorHint="@color/blanco"
+                    android:textColor="@color/blanco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -58,9 +61,9 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:text="Prueba Descripción: "
+                    android:text="Descripción: "
                     android:gravity="center_horizontal"
-                    android:textColor="@color/negro"
+                    android:textColor="@color/blanco"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,6 +72,8 @@
                 <EditText
                     android:id="@+id/etPruebaDescripcionJuego"
                     android:hint="Introduzca una descripción..."
+                    android:textColorHint="@color/blanco"
+                    android:textColor="@color/blanco"
                     android:gravity="center"
                     android:minHeight="80dp"
                     android:layout_width="match_parent"
@@ -89,15 +94,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="Prueba Precio: "
-                    android:textColor="@color/negro"
+                    android:text="Precio: "
+                    android:textColor="@color/blanco"
                     ></TextView>
 
                 <EditText
                     android:id="@+id/etPruebaPrecioJuego"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/blanco"
                     android:hint="Introduce un precio"
+                    android:textColorHint="@color/blanco"
                     android:inputType="number"
                     ></EditText>
 
@@ -166,21 +173,21 @@
                     android:textColor="@color/negro"
                     android:text="Plataformas"></Button>
 
+                <Button
+                    android:id="@+id/btnPruebaInsertarJuego"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Insertar"
+                    android:textColor="@color/negro"
+                    android:textStyle="bold"
+                    ></Button>
+
             </LinearLayout>
 
         </RelativeLayout>
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnPruebaInsertarJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:text="Insertar"
-        android:textColor="@color/negro"
-        android:textStyle="bold"
-        ></Button>
+
 
 </RelativeLayout>
